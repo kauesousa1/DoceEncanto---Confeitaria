@@ -5,7 +5,6 @@ import About        from "./components/About";
 import Menu         from "./components/Menu";
 import Testimonials from "./components/Testimonials";
 import Contact      from "./components/Contact";
-import Footer       from "./components/Footer";
 import { SmoothScrollHero } from "./SmoothScrollHero";
 
 export default function App() {
