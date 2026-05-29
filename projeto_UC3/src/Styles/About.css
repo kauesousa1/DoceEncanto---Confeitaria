@@ -20,7 +20,7 @@
 .about__img-placeholder {
   width: 100%;
   aspect-ratio: 4 / 2.2;
-  background: #D4A056;
+  background: transparent;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

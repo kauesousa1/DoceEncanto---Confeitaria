@@ -8,9 +8,9 @@ export default function About() {
         {/* Imagem do chocolate — troque por <img src="..." /> */}
         <div className="about__image-col">
           <div className="about__img-placeholder">
-            {/* <img src="/images/chocolate.png" alt="Chocolate" /> */}
-            <span>🍫</span>
-            <small>imagem do chocolate</small>
+            <img src="/ImagemChoco.svg" alt="Chocolate" /> 
+            
+            
           </div>
         </div>
 
