@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import "../styles/Hero.css";
+import "../Styles/Hero.css";
 
 export default function Hero() {
   const sectionRef = useRef(null);

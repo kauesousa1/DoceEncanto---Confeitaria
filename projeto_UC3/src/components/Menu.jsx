@@ -1,4 +1,4 @@
-import "../styles/Menu.css";
+import "../Styles/Menu.css";
 
 const BOLOS_SABORES = [
   { name: "*Chocolate", price: "RS 00,00" },

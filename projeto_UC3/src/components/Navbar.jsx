@@ -1,4 +1,4 @@
-import "../styles/Navbar.css";
+import "../Styles/Navbar.css";
 
 const LINKS = ["Início", "Cardápio", "Depoimentos", "Contato"];
 
