@@ -1,11 +1,9 @@
 /* ── Testimonials.css ─────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
 .testi {
   position: relative;
   width: 100%;
-  min-height: 120vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +35,9 @@
   line-height: 1.2;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
 .testi__title--pink {
   color: #E91E8C;
   font-style: italic;
@@ -51,60 +52,7 @@
   margin-top: 0.75rem;
 }
 
-/* ── Cards: mobile first (empilhados) ── */
-.depoi_andre,
-.depoi_lucas,
-.depoi_patri,
-.depoi_camila,
-.depoi_bea {
-  display: flex;
-  flex-direction: column;
-  position: relative; /* mobile: fluxo normal */
-  margin: 1rem auto;
-  transform: none;
-}
-
-/* ── Desktop: volta ao layout espalhado ── */
-@media (min-width: 1024px) {
-  .testi {
-    min-height: 120vh;
-  }
-
-  .depoi_andre {
-    position: absolute;
-    margin-left: -800px;
-    margin-top: 200px;
-    transform: rotate(-6deg);
-  }
-
-  .depoi_lucas {
-    position: absolute;
-    margin-left: -700px;
-    margin-top: 750px;
-    transform: rotate(-4deg);
-  }
-
-  .depoi_patri {
-    position: absolute;
-    margin-left: -300px;
-    margin-top: 850px;
-  }
-
-  .depoi_camila {
-    position: absolute;
-    margin-left: -50px;
-    margin-top: 470px;
-  }
-
-  .depoi_bea {
-    position: absolute;
-    margin-left: 600px;
-    margin-top: 400px;
-    transform: rotate(6deg);
-  }
-}
-
-/* CTA */
+/* CTA — fica no fundo da seção */
 .testi__cta {
   text-align: center;
   margin-top: auto;
@@ -118,6 +66,8 @@
   font-size: 30px;
   color: #6B3A1F;
   margin-bottom: 1rem;
+  margin-left:1300px;
+  
 }
 
 .testi__btn {
@@ -133,6 +83,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  margin-left: 1300px;
 }
 
 .testi__btn:hover {
@@ -140,12 +91,57 @@
   color: #ffffff;
 }
 
-.Nome_Depoi {
-  margin-top: 20px;
-  font-weight: 700;
-  font-size: 20px;
+.depoi_andre{
+  flex-direction: column;
+  display: flex;
+  margin-left: -800px;
+  margin-top:200px;
+  position: absolute;
+  transform: rotate(-6deg);
+
 }
 
-h2 {
+.depoi_lucas{
+ flex-direction: column;
+  display: flex;
+  margin-left: -700px;
+  margin-top:750px;
+  position: absolute;
+  transform: rotate(-4deg);
+}
+
+.depoi_patri{
+  flex-direction: column;
+  display: flex;
+  margin-left: -300px;
+  margin-top:850px;
+  position: absolute;
+}
+
+.depoi_camila{
+ flex-direction: column;
+  display: flex;
+  margin-left: -50px;
+  margin-top:470px;
+  position: absolute;
+
+}
+
+.depoi_bea{
+ flex-direction: column;
+  display: flex;
+  margin-left: 600px;
+  margin-top:400px;
+  position: absolute;
+  transform: rotate(6deg);
+}
+
+.Nome_Depoi {
+  margin-top:20px;
+  font-weight:700;
+  font-size:20px;
+}
+
+h2{
   font-size: 20px;
 }
