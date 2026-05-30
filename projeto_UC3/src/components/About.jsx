@@ -8,7 +8,7 @@ export default function About() {
         {/* Imagem do chocolate — troque por <img src="..." /> */}
         <div className="about__image-col">
           <div className="about__img-placeholder">
-            <img src="/ImagemChoco.svg" alt="Chocolate" /> 
+            <img src="/Logoempresa.svg" alt="Chocolate" /> 
             
             
           </div>
@@ -17,7 +17,7 @@ export default function About() {
         {/* Texto */}
         <div className="about__text-col">
           <h2 className="about__title">
-            Onde Cada Detalhe<br />Vira Encanto
+            Onde Cada Detalhe Vira Encanto
           </h2>
           <p className="about__body">
             Nossos ingredientes são selecionados com carinho, nossos fornos sempre

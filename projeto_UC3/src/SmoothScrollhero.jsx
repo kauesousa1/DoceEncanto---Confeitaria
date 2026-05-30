@@ -14,7 +14,7 @@ import BoloMara from './imagens/BoloMaracuja.png'
 
 export const SmoothScrollHero = () => {
   return (
-    <div style={{ background: "#F9D4E4" }}>
+    <div style={{ background: "#F9D4E4", position: "relative" }}>  {/* ← remova zIndex: 0 */}
       <ReactLenis root options={{ lerp: 0.05 }}>
         <Hero />
       </ReactLenis>
@@ -22,7 +22,7 @@ export const SmoothScrollHero = () => {
   );
 };
 
-const SECTION_HEIGHT = 1500;
+const SECTION_HEIGHT = 2500;
 
 const Hero = () => {
   return (
@@ -61,7 +61,7 @@ const CenterImage = () => {
   const opacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
-    [1, 0]
+    [1, 1]
   );
 
   return (
@@ -139,6 +139,27 @@ const ParallaxImages = () => {
         />
       </div>
 
+      {/* Linha 5: esquerda */}
+<div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+  <ParallaxImg
+    src={BoloMara}
+    alt="Bolo Caramelo"
+    start={-200}
+    end={200}
+    style={{ width: "35%" }}
+  />
+</div>
+
+{/* Linha 6: centro */}
+<div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
+  <ParallaxImg
+    src={BoloRosa}
+    alt="Bolo Roxo"
+    start={-200}
+    end={200}
+    style={{ width: "42%" }}
+  />
+</div>
     </div>
   );
 };

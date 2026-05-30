@@ -60,7 +60,7 @@ export default function Hero() {
 
       {/* Drip branco na base */}
       <div className="hero__drip">
-        <p className="hero__sub">confeitaria artesanal</p>
+        <p className="hero__sub"></p>
       </div>
 
     </section>

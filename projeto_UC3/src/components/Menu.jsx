@@ -26,21 +26,9 @@ const BOLOS_POTE = [
 ];
 
 const COPOS = [
-  {
-    name: "MORANGO",
-    price: "RS 00,00",
-    image: "/copos/CopoMorango.png",
-  },
-  {
-    name: "AVELÃ",
-    price: "RS 00,00",
-    image: "/copos/CopoChocolate.png",
-  },
-  {
-    name: "ABACAXI",
-    price: "RS 00,00",
-    image: "/copos/CopoAbacaxi.png",
-  },
+  { name: "MORANGO", price: "RS 00,00", image: "/CopoMorango.svg" },
+  { name: "AVELÃ",   price: "RS 00,00", image: "/CopoChocolate.svg" },
+  { name: "ABACAXI", price: "RS 00,00", image: "/CopoAbacaxi.svg" },
 ];
 
 const OUTROS_DOCES = [
@@ -86,114 +74,67 @@ export default function Menu() {
   return (
     <section className="menu" id="cardapio">
 
-      {/* Título */}
       <div className="menu__header">
         <h2 className="menu__title">Cardápio</h2>
-        <p className="menu__subtitle">
-          Doces que encantam, momentos que fazem
-        </p>
+        <p className="menu__subtitle">Doces que encantam, momentos que fazem</p>
       </div>
 
-      {/* Grid principal */}
       <div className="menu__grid">
 
-        {/* Coluna esquerda */}
         <div className="menu__col">
-
           <Card title="🎂 Bolos">
             <Sub label="Sabores" />
-            {BOLOS_SABORES.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
-
+            {BOLOS_SABORES.map((i, k) => <Item key={k} {...i} />)}
             <Sub label="Massas" />
-            {BOLOS_MASSAS.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
+            {BOLOS_MASSAS.map((i, k) => <Item key={k} {...i} />)}
           </Card>
 
           <Card title="🥧 Tortas">
-            {TORTAS.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
+            {TORTAS.map((i, k) => <Item key={k} {...i} />)}
           </Card>
 
           <Card title="🍯 Bolos de Pote">
-            {BOLOS_POTE.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
+            {BOLOS_POTE.map((i, k) => <Item key={k} {...i} />)}
           </Card>
-
         </div>
 
-        {/* Coluna direita */}
         <div className="menu__col">
-
           <Card title="🥤 Copos da Felicidade">
             <div className="menu__copos">
-
               {COPOS.map((c, k) => (
                 <div key={k} className="menu__copo">
-
                   <div className="menu__copo-img">
-                    <span>{c.emoji}</span>
+                    <img src={c.image} alt={c.name} /> {/* ← corrigido */}
                   </div>
-
                   <p className="menu__copo-name">{c.name}</p>
                   <p className="menu__copo-price">{c.price}</p>
-
                 </div>
               ))}
-
             </div>
           </Card>
 
           <Card title="🍬 Outros Doces">
-            {OUTROS_DOCES.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
+            {OUTROS_DOCES.map((i, k) => <Item key={k} {...i} />)}
           </Card>
 
           <Card title="🧁 Mini Bolos">
-            {MINI_BOLOS.map((i, k) => (
-              <Item key={k} {...i} />
-            ))}
+            {MINI_BOLOS.map((i, k) => <Item key={k} {...i} />)}
           </Card>
-
         </div>
 
       </div>
 
-      {/* Footer */}
       <div className="menu__footer">
-
         {[
-          {
-            icon: "📦",
-            label: "Encomendas com Antecedência",
-          },
-          {
-            icon: "❤️",
-            label: "Produtos Feitos com Muito Carinho",
-          },
-          {
-            icon: "✅",
-            label: "Ingredientes Selecionados",
-          },
+          { icon: "📦", label: "Encomendas com Antecedência" },
+          { icon: "❤️", label: "Produtos Feitos com Muito Carinho" },
+          { icon: "✅", label: "Ingredientes Selecionados" },
         ].map((f, i) => (
           <div key={i} className="menu__footer-item">
-
-            <span className="menu__footer-icon">
-              {f.icon}
-            </span>
-
-            <span className="menu__footer-label">
-              {f.label}
-            </span>
-
+            <span className="menu__footer-icon">{f.icon}</span>
+            <span className="menu__footer-label">{f.label}</span>
           </div>
         ))}
-
       </div>
 
     </section>
