@@ -6,15 +6,11 @@ import {
   useTransform,
 } from "motion/react";
 import { useRef } from "react";
-import BoloRosa from './imagens/BoloRosaBACK.png'
-import Brigadieros from './imagens/brigadeiro.png'
-import BrigadeiroLetras from './imagens/BrigadeiroLetras.png'
-import BoloRoxa from './imagens/BoloRosasRoxa.png'
-import BoloMara from './imagens/BoloMaracuja.png'
+import BoloRosa from './imagens/imagemBack.png'
 
 export const SmoothScrollHero = () => {
   return (
-    <div style={{ background: "#F9D4E4", position: "relative" }}>  {/* ← remova zIndex: 0 */}
+    <div style={{ background: "#F9D4E4", position: "relative" }}>
       <ReactLenis root options={{ lerp: 0.05 }}>
         <Hero />
       </ReactLenis>
@@ -31,7 +27,7 @@ const Hero = () => {
       className="relative w-full"
     >
       <CenterImage />
-      <ParallaxImages />
+      <ParallaxCards />
       <div
         style={{
           position: "absolute",
@@ -82,7 +78,17 @@ const CenterImage = () => {
   );
 };
 
-const ParallaxImages = () => {
+// Lista de depoimentos - troque nome, estrelas e texto pelos reais
+const reviews = [
+  { name: "Ana Clara", stars: 5, text: "O bolo estava ótimo." },
+  { name: "Pedro Souza", stars: 5, text: "Melhor brigadeiro que já comi!" },
+  { name: "Juliana Lima", stars: 4, text: "Entrega rápida e muito saboroso." },
+  { name: "Marcos Vinícius", stars: 5, text: "Recomendo demais, ficou lindo!" },
+  { name: "Beatriz Alves", stars: 5, text: "Superou minhas expectativas." },
+  { name: "Rafael Costa", stars: 4, text: "Qualidade excelente, voltarei a comprar." },
+];
+
+const ParallaxCards = () => {
   return (
     <div style={{
       width: "100%",
@@ -95,76 +101,128 @@ const ParallaxImages = () => {
       gap: "4rem",
     }}>
 
-      {/* Linha 1: imagem à esquerda */}
+      {/* Linha 1: card à esquerda */}
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
-        <ParallaxImg
-          src={Brigadieros}
-          alt="Brigadeiros"
+        <ParallaxCard
+          review={reviews[0]}
           start={-200}
           end={200}
           style={{ width: "38%" }}
         />
       </div>
 
-      {/* Linha 2: imagem centralizada */}
+      {/* Linha 2: card centralizado */}
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <ParallaxImg
-          src={BoloMara}
-          alt="Bolo de Maracujá"
+        <ParallaxCard
+          review={reviews[1]}
           start={200}
           end={-250}
           style={{ width: "60%" }}
         />
       </div>
 
-      {/* Linha 3: imagem à direita */}
+      {/* Linha 3: card à direita */}
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-        <ParallaxImg
-          src={BrigadeiroLetras}
-          alt="Brigadeiro letras"
+        <ParallaxCard
+          review={reviews[2]}
           start={-200}
           end={200}
           style={{ width: "38%" }}
         />
       </div>
 
-      {/* Linha 4: imagem centralizada levemente à esquerda */}
+      {/* Linha 4: card centralizado */}
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <ParallaxImg
-          src={BoloRoxa}
-          alt="Bolo rosa e roxo"
+        <ParallaxCard
+          review={reviews[3]}
           start={0}
           end={-500}
           style={{ width: "45%" }}
         />
       </div>
 
-      {/* Linha 5: esquerda */}
-<div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-  <ParallaxImg
-    src={BoloMara}
-    alt="Bolo Caramelo"
-    start={-200}
-    end={200}
-    style={{ width: "35%" }}
-  />
-</div>
+      {/* Linha 5: card à direita */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <ParallaxCard
+          review={reviews[4]}
+          start={-200}
+          end={200}
+          style={{ width: "35%" }}
+        />
+      </div>
 
-{/* Linha 6: centro */}
-<div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
-  <ParallaxImg
-    src={BoloRosa}
-    alt="Bolo Roxo"
-    start={-200}
-    end={200}
-    style={{ width: "42%" }}
-  />
-</div>
+      {/* Linha 6: card à esquerda */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
+        <ParallaxCard
+          review={reviews[5]}
+          start={-200}
+          end={200}
+          style={{ width: "42%" }}
+        />
+      </div>
     </div>
   );
 };
 
-const ParallaxImg = ({ alt, src, start, end, style }) => {
+const Stars = ({ count }) => {
+  return (
+    <div style={{ display: "flex", gap: "2px", marginTop: "2px" }}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span
+          key={i}
+          style={{
+            fontSize: "16px",
+            color: i < count ? "#F2B84B" : "#E0E0E0",
+            lineHeight: 1,
+          }}
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const ReviewCard = ({ name, stars, text }) => {
+  return (
+    <div
+      style={{
+        background: "#FFFFFF",
+        borderRadius: "24px",
+        padding: "28px 32px",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+        display: "flex",
+        flexDirection: "column",
+        gap: "18px",
+        width: "100%",
+        boxSizing: "border-box",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+        <div
+          style={{
+            width: "56px",
+            height: "56px",
+            borderRadius: "50%",
+            background: "#D9D9D9",
+            flexShrink: 0,
+          }}
+        />
+        <div>
+          <div style={{ fontSize: "18px", fontWeight: 500, color: "#1A1A1A" }}>
+            {name}
+          </div>
+          <Stars count={stars} />
+        </div>
+      </div>
+      <div style={{ fontSize: "20px", color: "#1A1A1A", lineHeight: 1.4 }}>
+        “{text}”
+      </div>
+    </div>
+  );
+};
+
+const ParallaxCard = ({ review, start, end, style }) => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -178,11 +236,11 @@ const ParallaxImg = ({ alt, src, start, end, style }) => {
   const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
 
   return (
-    <motion.img
-      src={src}
-      alt={alt}
+    <motion.div
       ref={ref}
-      style={{ ...style, transform, opacity, borderRadius: "12px" }}
-    />
+      style={{ ...style, transform, opacity }}
+    >
+      <ReviewCard name={review.name} stars={review.stars} text={review.text} />
+    </motion.div>
   );
 };
