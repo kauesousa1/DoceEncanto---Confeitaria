@@ -1,66 +1,245 @@
 /* ── About.css ────────────────────────────────────── */
 
 .about {
-  background: #ffffff;
-  padding: 5rem 2rem 4rem;
-}
-
-.about__grid {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-/* Imagem */
-.about__image-col { display: flex; flex-direction: column; }
-
-.about__img-placeholder {
-  width: 100%;
-  aspect-ratio: 5 / 8; /* quadrado, se quiser mais alto use 3/4 */
-  background: transparent;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(180deg, #FDF3F0 0%, #ffffff 100%);
+  padding: 6rem 5rem;
+  position: relative;
   overflow: hidden;
 }
 
-.about__img-placeholder img {
+/* ── Animações reaproveitadas da hero ──────────────── */
+@keyframes float-up-down {
+  0%   { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+  50%  { transform: translateY(-16px) rotate(var(--rot, 0deg)); }
+  100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+}
+
+@keyframes spin-slow-anim {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.float-slow   { animation: float-up-down 6s ease-in-out infinite; }
+.float-medium { animation: float-up-down 4.2s ease-in-out infinite; }
+.spin-slow    { animation: spin-slow-anim 18s linear infinite; }
+
+/* ── Decorações de fundo ───────────────────────────── */
+.about__deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.about__deco--whisk {
+  width: 90px;
+  top: 40px;
+  right: 60px;
+  --rot: 20deg;
+  transform: rotate(20deg);
+  opacity: 0.35;
+}
+
+.about__deco--heart-1 {
+  font-size: 2.5rem;
+  color: #F27CA0;
+  top: 15%;
+  left: 46%;
+}
+
+.about__deco--heart-2 {
+  font-size: 1.6rem;
+  color: #F9A8C2;
+  bottom: 10%;
+  left: 40%;
+}
+
+/* ── Grid principal ────────────────────────────────── */
+.about__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Coluna da foto ────────────────────────────────── */
+.about__image-col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about__photo-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, #F9A8C2 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.about__photo-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.about__photo {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+}
+
+/* Selo girando */
+.about__badge {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 110px;
+  height: 110px;
+  z-index: 2;
+}
+
+.about__badge-svg {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* era cover — contain mostra a imagem inteira */
-  border-radius: 10px;
 }
 
-.about__img-placeholder span { font-size: 3.5rem; }
-.about__img-placeholder small {
+.about__badge-svg text {
   font-family: 'Lato', sans-serif;
-  font-size: 0.75rem;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: #A0174F;
 }
 
-/* Texto */
+.about__badge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  color: #E0165C;
+}
+
+/* ── Texto ─────────────────────────────────────────── */
+.about__kicker {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #A0174F;
+}
+
 .about__title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
   color: #2C1A0E;
-  line-height: 1.25;
-  margin-bottom: 1.5rem;
-  width: 650px;
+  line-height: 1.2;
+  margin: 0.8rem 0 1.5rem;
+}
+
+.about__title-highlight {
+  position: relative;
+  display: inline-block;
+  color: #E0165C;
+  font-style: italic;
+}
+
+.about__underline {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 16px;
 }
 
 .about__body {
   font-family: 'Lato', sans-serif;
-  font-size: 20px;
+  font-size: 1.05rem;
   color: #6B3A1F;
-  line-height: 1.85;
+  line-height: 1.8;
   margin-bottom: 1rem;
-  width: 550px;
+  max-width: 520px;
 }
 
-@media (max-width: 700px) {
-  .about__grid { grid-template-columns: 1fr; gap: 2rem; }
+/* ── Estatísticas ──────────────────────────────────── */
+.about__stats {
+  display: flex;
+  gap: 2.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #f0d5d5;
+  border-bottom: 1px solid #f0d5d5;
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #E0165C;
+}
+
+.about__stat-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  color: #6B3A1F;
+  line-height: 1.3;
+  margin-top: 0.2rem;
+}
+
+/* ── Selos com ícones ──────────────────────────────── */
+.about__features {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.about__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.about__feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fbe2df;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #c96a5f;
+}
+
+.about__feature span {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: #6B3A1F;
+  line-height: 1.3;
+}
+
+/* ── Responsivo ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about { padding: 4rem 2rem; }
+  .about__grid { grid-template-columns: 1fr; text-align: center; }
+  .about__stats, .about__features { justify-content: center; flex-wrap: wrap; }
+  .about__body { margin-left: auto; margin-right: auto; }
+  .about__badge { right: 10px; }
 }

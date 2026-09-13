@@ -1,111 +1,237 @@
 /* ── Hero.css ─────────────────────────────────────── */
 
 .hero {
-  background: #C2185B;
+  background: linear-gradient(135deg, #F9A8C2 0%, #F27CA0 100%);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 2rem 5rem 0;
 }
 
-/* ── Marquee de fundo ──────────────────────────────── */
-.hero__bg-text {
+/* ── Animações de flutuar ──────────────────────────── */
+@keyframes float-up-down {
+  0%   { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+  50%  { transform: translateY(-18px) rotate(var(--rot, 0deg)); }
+  100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+}
+
+.float-slow   { animation: float-up-down 6s ease-in-out infinite; }
+.float-medium { animation: float-up-down 4.5s ease-in-out infinite; }
+
+/* ── Elementos decorativos ─────────────────────────── */
+.hero__deco {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.2rem;
-  overflow: hidden;
-  user-select: none;
+  z-index: 1;
   pointer-events: none;
 }
 
-.hero__marquee { overflow: hidden; width: 100%; }
-
-.hero__marquee-track {
-  display: flex;
-  gap: 2rem;
-  white-space: nowrap;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: clamp(3rem, 10vw, 7rem);
-  color: #A0174F;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
+.hero__deco--whisk {
+  top: -10px;
+  left: -30px;
+  width: 130px;
+  --rot: -135deg;
+  transform: rotate(-135deg);
 }
 
-.hero__marquee--right .hero__marquee-track {
-  animation: marquee-right 18s linear infinite;
-}
-.hero__marquee--left .hero__marquee-track {
-  animation: marquee-left 18s linear infinite;
-}
-
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0%); }
-}
-@keyframes marquee-left {
-  from { transform: translateX(0%); }
-  to   { transform: translateX(-50%); }
+.hero__deco--spoon {
+  top: 90px;
+  right: 150px;
+  width: 140px;
+  --rot: 150deg;
+  transform: rotate(150deg);
 }
 
-/* ── Composição bolo + fatia ───────────────────────── */
-.hero__composition {
+/* ── Navbar ────────────────────────────────────────── */
+.hero__nav {
   position: relative;
-  z-index: 2;
-  width: clamp(400px, 65vw, 700px);
-  margin-bottom: 80px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-.hero__bolo-base {
+.hero__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transform: translateX(170px);
+}
+
+.hero__logo img { width: 44px; height: 44px; }
+
+.hero__logo-name {
   display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #4A1D2F;
+}
+
+.hero__logo small {
+  display: block;
+  font-size: 0.7rem;
+  color: #7a4a5c;
+}
+
+.hero__menu {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  color: #3d1b28;
+}
+
+.hero__menu li { cursor: pointer; }
+.hero__menu li.active { border-bottom: 2px solid #A0174F; padding-bottom: 4px; }
+
+.hero__cta-nav {
+  background: #3A1F1A;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── Conteúdo principal ────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.hero__text {
+  padding-right: 2rem;
+  margin-bottom: 50px;
+}
+
+.hero__kicker {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #5c1330;
+}
+
+.hero__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  color: #2C1A0E;
+  line-height: 1.15;
+  margin: 0.8rem 0;
+  width: 450px;
+  position: relative;
+}
+
+.hero__title-script {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #E0165C;
+}
+
+.hero__body {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  color: #4a2330;
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+}
+
+.hero__cta {
+  background: #3A1F1A;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Foto centralizada na própria coluna */
+.hero__photo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__photo {
   width: 100%;
+  max-width: 700px;
   height: auto;
-  filter: drop-shadow(0 16px 48px rgba(0,0,0,0.45));
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+  transform: translateX(-300px);
 }
 
-/* 
-  Ajuste fino: mover para cima (-8%) e esquerda (44% → 43%)
-  para encaixar a fatia exatamente no buraco do bolo
-*/
-.hero__fatia {
-  position: absolute;
-  left: 37%;       /* ← mais para a esquerda */
-  top: 30%;        /* ↑ mais para cima */
-  width: 50%;
-  height: auto;
-  transform-origin: 5% 5%;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
-}
-
-/* ── Drip branco ───────────────────────────────────── */
+/* ── Drip conectando com a seção Sobre ────────────── */
+/* ── Drip pontudo (estilo estalactite) ────────────── */
 .hero__drip {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 120px;
-  background: #ffffff;
-  border-radius: 60% 60% 0 0 / 80px 80px 0 0;
-  z-index: 3;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 1.2rem;
+  z-index: 2;
+  line-height: 0;
+  overflow: visible;
+  margin-bottom: -100px;
 }
 
-.hero__sub {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.85rem;
-  color: #6B3A1F;
-  letter-spacing: 0.1em;
+.hero__drip-svg {
+  display: block;
+  width: 100%;
+  height: 180px;
 }
 
-@media (max-width: 600px) {
-  .hero__composition { margin-bottom: 90px; }
+/* ── Gotinhas pingando (rosas, maiores) ───────────── */
+.hero__drop {
+  position: absolute;
+  width: 26px;
+  height: 38px;
+  background: #F27CA0;
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  top: 130px;
+  z-index: 1;
+  opacity: 0;
+  animation: drip-fall 3.2s ease-in infinite;
+  box-shadow: 0 3px 6px rgba(160, 23, 79, 0.25);
+}
+
+@keyframes drip-fall {
+  0%   { transform: translateY(0) scale(1);   opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { transform: translateY(55px) scale(0.9); opacity: 1; }
+  100% { transform: translateY(80px) scale(0.6); opacity: 0; }
+}
+
+.hero__drop--1 { left: 4%;   animation-delay: 0s; }
+.hero__drop--2 { left: 12.5%; animation-delay: 1.4s; }
+.hero__drop--3 { left: 29%;  animation-delay: 0.6s; }
+.hero__drop--4 { left: 46%;  animation-delay: 2s; }
+.hero__drop--5 { left: 62.5%; animation-delay: 0.9s; }
+.hero__drop--6 { left: 79%;  animation-delay: 1.7s; }
+
+.hero__drop--1 { left: 10.5%; animation-delay: 0s; }
+.hero__drop--2 { left: 21%;   animation-delay: 1s; }
+.hero__drop--3 { left: 37%;   animation-delay: 0.5s; }
+.hero__drop--4 { left: 58%;   animation-delay: 1.5s; }
+.hero__drop--5 { left: 79%;   animation-delay: 2s; }
+.hero__drop--6 { left: 89%;   animation-delay: 0.8s; }
+
+@media (max-width: 900px) {
+  .hero__content { grid-template-columns: 1fr; text-align: center; }
+  .hero__menu { display: none; }
+  .hero__deco { display: none; }
+  .hero__text { padding-right: 0; }
 }
