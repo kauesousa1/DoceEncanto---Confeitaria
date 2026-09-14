@@ -5,6 +5,7 @@
   padding: 6rem 5rem;
   position: relative;
   overflow: hidden;
+  height: 120vh;
 }
 
 /* ── Animações reaproveitadas da hero ──────────────── */
@@ -64,6 +65,7 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  top: 200px;
 }
 
 /* ── Coluna da foto ────────────────────────────────── */

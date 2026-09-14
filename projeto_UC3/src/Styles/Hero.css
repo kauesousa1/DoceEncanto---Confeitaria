@@ -1,14 +1,18 @@
 /* ── Hero.css ─────────────────────────────────────── */
 
 .hero {
-  background: linear-gradient(135deg, #F9A8C2 0%, #F27CA0 100%);
-  min-height: 100vh;
+  background: linear-gradient(180deg, #F9A8C2 0%, #F27CA0 60%, #F27CA0 100%);
   position: relative;
-  overflow: hidden;
-  padding: 2rem 5rem 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  margin-bottom: -180px;
+  padding: 2rem clamp(1.5rem, 5vw, 5rem) 0;
+  
 }
 
-/* ── Animações de flutuar ──────────────────────────── */
+/* ── Animações ─────────────────────────────────────── */
 @keyframes float-up-down {
   0%   { transform: translateY(0px) rotate(var(--rot, 0deg)); }
   50%  { transform: translateY(-18px) rotate(var(--rot, 0deg)); }
@@ -34,11 +38,21 @@
 }
 
 .hero__deco--spoon {
-  top: 90px;
-  right: 150px;
+  top: 220px;
+  right: 10%;
   width: 140px;
   --rot: 150deg;
   transform: rotate(150deg);
+}
+
+
+
+.hero__deco--bolo {
+  bottom: 240px;
+  right: -120px;           
+ 
+  width: clamp(580px, 22vw, 320px);
+  z-index: 2;
 }
 
 /* ── Navbar ────────────────────────────────────────── */
@@ -50,16 +64,17 @@
   justify-content: space-between;
   max-width: 1300px;
   margin: 0 auto;
+  width: 100%;
+  gap: 1rem;
 }
 
 .hero__logo {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  transform: translateX(170px);
 }
 
-.hero__logo img { width: 44px; height: 44px; }
+.hero__logo img { width: 44px; height: 44px; flex-shrink: 0; }
 
 .hero__logo-name {
   display: block;
@@ -74,19 +89,11 @@
   color: #7a4a5c;
 }
 
-.hero__menu {
-  display: flex;
-  gap: 2.2rem;
-  list-style: none;
-  font-family: 'Lato', sans-serif;
-  font-weight: 600;
-  color: #3d1b28;
-}
-
-.hero__menu li { cursor: pointer; }
-.hero__menu li.active { border-bottom: 2px solid #A0174F; padding-bottom: 4px; }
-
 .hero__cta-nav {
+  position: absolute;
+  top: 20px;
+  transform: translateX(1300px);
+
   background: #3A1F1A;
   color: #fff;
   border: none;
@@ -94,6 +101,7 @@
   border-radius: 30px;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 /* ── Conteúdo principal ────────────────────────────── */
@@ -102,16 +110,20 @@
   z-index: 3;
   max-width: 1300px;
   margin: 0 auto;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
   margin-top: 4rem;
+  flex: 1;
 }
 
 .hero__text {
   padding-right: 2rem;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  transform: translateX(-50px);
+  min-width: 500px;
 }
 
 .hero__kicker {
@@ -129,8 +141,7 @@
   color: #2C1A0E;
   line-height: 1.15;
   margin: 0.8rem 0;
-  width: 450px;
-  position: relative;
+  max-width: 450px;
 }
 
 .hero__title-script {
@@ -159,7 +170,6 @@
   cursor: pointer;
 }
 
-/* Foto centralizada na própria coluna */
 .hero__photo-wrap {
   display: flex;
   justify-content: center;
@@ -168,24 +178,51 @@
 
 .hero__photo {
   width: 100%;
-  max-width: 700px;
+  max-width: 800px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
-  transform: translateX(-300px);
+  margin-right: 600px;
 }
 
-/* ── Drip conectando com a seção Sobre ────────────── */
-/* ── Drip pontudo (estilo estalactite) ────────────── */
-.hero__drip {
+
+
+.hero__composition {
+  position: relative;
+  width: 100%;
+  min-width: 900px;
+  margin: 20 auto;
+  transform: translateX(-250px);
+}
+
+.hero__bolo-base {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 16px 48px rgba(0,0,0,0.3));
+}
+
+.hero__fatia {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+  left: 37%;
+  top: 30%;
+  width: 50%;
+  height: auto;
+  transform-origin: 5% 5%;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+}
+
+/* ── Drip ──────────────────────────────────────────── */
+.hero__drip {
+  position: relative;
+  width: calc(100% + 10rem);
+  margin-left: -5rem;
+  margin-right: -5rem;
+  z-index: 5;
   line-height: 0;
   overflow: visible;
-  margin-bottom: -100px;
+  margin-top: 2rem;
+  
 }
 
 .hero__drip-svg {
@@ -194,12 +231,11 @@
   height: 180px;
 }
 
-/* ── Gotinhas pingando (rosas, maiores) ───────────── */
 .hero__drop {
   position: absolute;
   width: 26px;
   height: 38px;
-  background: #F27CA0;
+  background: linear-gradient(180deg, #F27CA0 0%, #E85B93 100%);
   border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
   top: 130px;
   z-index: 1;
@@ -222,16 +258,71 @@
 .hero__drop--5 { left: 62.5%; animation-delay: 0.9s; }
 .hero__drop--6 { left: 79%;  animation-delay: 1.7s; }
 
-.hero__drop--1 { left: 10.5%; animation-delay: 0s; }
-.hero__drop--2 { left: 21%;   animation-delay: 1s; }
-.hero__drop--3 { left: 37%;   animation-delay: 0.5s; }
-.hero__drop--4 { left: 58%;   animation-delay: 1.5s; }
-.hero__drop--5 { left: 79%;   animation-delay: 2s; }
-.hero__drop--6 { left: 89%;   animation-delay: 0.8s; }
+/* ══════════════════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════════════════ */
 
 @media (max-width: 900px) {
-  .hero__content { grid-template-columns: 1fr; text-align: center; }
-  .hero__menu { display: none; }
-  .hero__deco { display: none; }
-  .hero__text { padding-right: 0; }
+  .hero__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .hero__text {
+    padding-right: 0;
+    order: 1; /* texto sempre primeiro no mobile */
+  }
+
+  .hero__photo-wrap {
+    order: 2;
+  }
+
+  .hero__title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__deco--whisk,
+  .hero__deco--spoon {
+    display: none; /* removem no mobile pra não poluir */
+  }
+
+
+.hero__deco--bolo {
+  right: auto;
+  left: 0;
+  bottom: 20px;
+  width: 140px;
+}
+
+  .hero__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .hero__logo {
+    order: 1;
+  }
+
+  .hero__cta-nav {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__deco--bolo {
+    width: 110px;
+    bottom: 10px;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
 }
