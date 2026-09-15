@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { FiArrowUpRight } from "react-icons/fi";
-import BoloBranco from './imagens/bolos.jpg.png'
 
 
 const IMG_PADDING = 12;

@@ -1,0 +1,61 @@
+.parallax-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 200px 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9rem; /* era 4rem — mais espaço de sobra entre linhas */
+}
+
+.parallax-row {
+  width: 100%;
+  display: flex;
+}
+
+.parallax-row--left {
+  justify-content: flex-start;
+}
+
+.parallax-row--right {
+  justify-content: flex-end;
+}
+
+.parallax-row--center {
+  justify-content: center;
+}
+
+.parallax-row--left .parallax-card {
+  margin-left: -3%;
+}
+
+.parallax-row--right .parallax-card {
+  margin-right: -3%;
+}
+
+/* Larguras reduzidas — sobra mais espaço vazio nas laterais
+   e entre cards vizinhos horizontalmente */
+.parallax-card--1 { width: 26%; }
+.parallax-card--2 { width: 34%; }
+.parallax-card--3 { width: 24%; }
+.parallax-card--4 { width: 30%; }
+.parallax-card--5 { width: 24%; }
+.parallax-card--6 { width: 28%; }
+
+@media (max-width: 768px) {
+  .parallax-row--left .parallax-card,
+  .parallax-row--right .parallax-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .parallax-card--1,
+  .parallax-card--2,
+  .parallax-card--3,
+  .parallax-card--4,
+  .parallax-card--5,
+  .parallax-card--6 {
+    width: 90%;
+  }
+}

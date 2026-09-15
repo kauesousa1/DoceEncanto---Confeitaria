@@ -17,7 +17,7 @@ export default function App() {
         html { scroll-behavior: smooth; }
       `}</style>
 
-      <Navbar/>
+      {/* <Navbar/> */}
 
       <main>
         <Hero />          

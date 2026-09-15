@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   padding: 4rem 2rem 6rem;
+  overflow: hidden; /* evita que cards nas bordas criem scroll horizontal */
 }
 
 /* Cabeçalho */
@@ -37,13 +38,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-
 .testi__title--pink {
   color: #E91E8C;
   font-style: italic;
   font-family: 'Pacifico', cursive;
   font-size: 50px;
-  font-family:'https://fonts.googleapis.com/css2?family=Pacifico&display=swap';
 }
 
 .testi__desc {
@@ -60,6 +59,7 @@
   padding-top: 3rem;
   position: relative;
   z-index: 2;
+  width: 100%; /* precisa disso pro text-align:center funcionar de verdade */
 }
 
 .testi__cta-text {
@@ -67,8 +67,7 @@
   font-size: 30px;
   color: #6B3A1F;
   margin-bottom: 1rem;
-  margin-left:1300px;
-  
+  /* removido margin-left: 1300px — jogava o texto pra fora da tela em boa parte dos monitores */
 }
 
 .testi__btn {
@@ -84,7 +83,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  margin-left: 1300px;
+  /* removido margin-left: 1300px, pelo mesmo motivo */
 }
 
 .testi__btn:hover {
@@ -92,57 +91,62 @@
   color: #ffffff;
 }
 
-.depoi_andre{
+/* ── Cards de depoimento ──────────────────────────────
+   Trocado margin-left/margin-top (px fixos) por left/top
+   em %, relativos ao .testi. Assim os cards se distribuem
+   proporcionalmente à largura real da tela, não a um valor
+   fixo que só funciona numa resolução específica.
+   ──────────────────────────────────────────────────── */
+
+.depoi_andre {
   flex-direction: column;
   display: flex;
-  margin-left: -750px;
-  margin-top:200px;
   position: absolute;
+  left: 2%;
+  top: 220px;
   transform: rotate(-6deg);
-
 }
 
-.depoi_lucas{
- flex-direction: column;
+.depoi_lucas {
+  flex-direction: column;
   display: flex;
-  margin-left: -700px;
-  margin-top:750px;
   position: absolute;
+  left: 8%;
+  top: 750px;
   transform: rotate(-4deg);
 }
 
-.depoi_patri{
+.depoi_patri {
   flex-direction: column;
   display: flex;
-  margin-left: -300px;
-  margin-top:850px;
   position: absolute;
+  left: 32%;
+  top: 850px;
 }
 
-.depoi_camila{
- flex-direction: column;
+.depoi_camila {
+  flex-direction: column;
   display: flex;
-  margin-left: -50px;
-  margin-top:470px;
   position: absolute;
-
+  left: 56%;
+  top: 470px;
 }
 
-.depoi_bea{
- flex-direction: column;
+.depoi_bea {
+  flex-direction: column;
   display: flex;
-  margin-left: 600px;
-  margin-top:400px;
   position: absolute;
+  left: 80%;
+  top: 400px;
   transform: rotate(6deg);
 }
 
 .Nome_Depoi {
-  margin-top:20px;
-  font-weight:700;
-  font-size:20px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
-h2{
+h2 {
   font-size: 20px;
 }

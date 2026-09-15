@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
 import "../Styles/Hero.css";
-import batedeira from "../imagens/batedoura.svg";
-import colherChocolate from "../imagens/colherChocolate.svg";
-import logoEmpresa from "../imagens/Logoempresa.svg";
-import mesaDeBolos from "../imagens/mesaBolo.svg";
-
+// import batedeira from "../imagens/batedoura.svg";
+// import colherChocolate from "../imagens/colherChocolate.svg";
+// import logoEmpresa from "../imagens/Logoempresa.svg";
+// import mesaDeBolos from "../imagens/mesaBolo.svg";
+import videoHero from "../videos/videoHero.mp4";
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -26,20 +26,34 @@ export default function Hero() {
   return (
     <section className="hero" ref={sectionRef}>
 
-      <img className="hero__deco hero__deco--whisk float-slow" src={batedeira} alt="" aria-hidden="true" />
-      <img className="hero__deco hero__deco--spoon float-medium" src={colherChocolate} alt="" aria-hidden="true" />
+      {/* Vídeo de fundo */}
+      <video
+        className="hero__bg-video"
+        autoPlay
+        muted
+        playsInline
+        webkit-playsinline="true"
+        preload="auto"
+      >
+        <source src={videoHero} type="video/mp4" />
+      </video>
+
+      <div className="hero__overlay"></div>
+
+      {/* <img className="hero__deco hero__deco--whisk float-slow" src={batedeira} alt="" aria-hidden="true" /> */}
+      {/* <img className="hero__deco hero__deco--spoon float-medium" src={colherChocolate} alt="" aria-hidden="true" /> */}
       {/* <img className="hero__deco hero__deco--bolo" src={mesaDeBolos} alt="" aria-hidden="true" /> */}
 
-      <nav className="hero__nav">
-        {/* <div className="hero__logo">
+      {/* <nav className="hero__nav">
+        <div className="hero__logo">
           <img src={logoEmpresa} alt="Doce Encanto" />
           <div>
             <span className="hero__logo-name">Regiane</span>
             <small>Confeiteira e Fundadora</small>
           </div>
-        </div> */}
+        </div>
         <button className="hero__cta-nav">🧁 Peça agora</button>
-      </nav>
+      </nav> */}
 
       <div className="hero__content">
         <div className="hero__text">
@@ -56,7 +70,7 @@ export default function Hero() {
         </div>
 
         {/* Composição do bolo no lugar da foto da Regiane */}
-        <div className="hero__photo-wrap">
+        {/* <div className="hero__photo-wrap">
           <div className="hero__composition">
             <img
               className="hero__bolo-base"
@@ -75,10 +89,10 @@ export default function Hero() {
               }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className="hero__drip" ref={dripRef}>
+      {/* <div className="hero__drip" ref={dripRef}>
         <svg viewBox="0 0 1440 180" preserveAspectRatio="none" className="hero__drip-svg">
           <path
             d="M0,0
@@ -109,7 +123,7 @@ export default function Hero() {
             <span className="hero__drop hero__drop--6"></span>
           </>
         )}
-      </div>
+      </div> */}
 
     </section>
   );

@@ -86,28 +86,30 @@ const reviews = [
   { name: "Marcos Vinícius", stars: 5, text: "Recomendo demais, ficou lindo!" },
   { name: "Beatriz Alves", stars: 5, text: "Superou minhas expectativas." },
   { name: "Rafael Costa", stars: 4, text: "Qualidade excelente, voltarei a comprar." },
+  { name: "Camila Rocha", stars: 5, text: "Simplesmente maravilhoso, virei cliente fiel!" },
+  { name: "Thiago Martins", stars: 5, text: "Chegou rapidinho e estava impecável." },
 ];
 
 const ParallaxCards = () => {
   return (
     <div style={{
       width: "100%",
-      maxWidth: "900px",
+      maxWidth: "1400px",
       margin: "0 auto",
       padding: "200px 2rem 0",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      gap: "4rem",
+      gap: "9rem",
     }}>
 
       {/* Linha 1: card à esquerda */}
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
         <ParallaxCard
           review={reviews[0]}
-          start={-200}
-          end={200}
-          style={{ width: "38%" }}
+          start={-80}
+          end={80}
+          style={{ width: "26%", marginLeft: "-4%" }}
         />
       </div>
 
@@ -115,9 +117,9 @@ const ParallaxCards = () => {
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <ParallaxCard
           review={reviews[1]}
-          start={200}
-          end={-250}
-          style={{ width: "60%" }}
+          start={80}
+          end={-100}
+          style={{ width: "34%" }}
         />
       </div>
 
@@ -125,9 +127,9 @@ const ParallaxCards = () => {
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
         <ParallaxCard
           review={reviews[2]}
-          start={-200}
-          end={200}
-          style={{ width: "38%" }}
+          start={-80}
+          end={80}
+          style={{ width: "24%", marginRight: "-4%" }}
         />
       </div>
 
@@ -136,8 +138,8 @@ const ParallaxCards = () => {
         <ParallaxCard
           review={reviews[3]}
           start={0}
-          end={-500}
-          style={{ width: "45%" }}
+          end={-150}
+          style={{ width: "30%" }}
         />
       </div>
 
@@ -145,9 +147,9 @@ const ParallaxCards = () => {
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
         <ParallaxCard
           review={reviews[4]}
-          start={-200}
-          end={200}
-          style={{ width: "35%" }}
+          start={-80}
+          end={80}
+          style={{ width: "24%", marginRight: "-4%" }}
         />
       </div>
 
@@ -155,9 +157,29 @@ const ParallaxCards = () => {
       <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
         <ParallaxCard
           review={reviews[5]}
-          start={-200}
-          end={200}
-          style={{ width: "42%" }}
+          start={-80}
+          end={80}
+          style={{ width: "28%", marginLeft: "-4%" }}
+        />
+      </div>
+
+      {/* Linha 7: card centralizado */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <ParallaxCard
+          review={reviews[6]}
+          start={60}
+          end={-80}
+          style={{ width: "32%" }}
+        />
+      </div>
+
+      {/* Linha 8: card à direita */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+        <ParallaxCard
+          review={reviews[7]}
+          start={-80}
+          end={80}
+          style={{ width: "26%", marginRight: "-4%" }}
         />
       </div>
     </div>
