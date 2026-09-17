@@ -7,6 +7,7 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 import BoloRosa from './imagens/imagemBack.png'
+import "./Styles/SmoothScrollHero.module.css"; // importa as classes responsivas
 
 export const SmoothScrollHero = () => {
   return (
@@ -92,94 +93,85 @@ const reviews = [
 
 const ParallaxCards = () => {
   return (
-    <div style={{
-      width: "100%",
-      maxWidth: "1400px",
-      margin: "0 auto",
-      padding: "200px 2rem 0",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: "9rem",
-    }}>
+    <div className="parallax-container">
 
       {/* Linha 1: card à esquerda */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
+      <div className="parallax-row parallax-row--left">
         <ParallaxCard
           review={reviews[0]}
           start={-80}
           end={80}
-          style={{ width: "26%", marginLeft: "-4%" }}
+          cardClass="parallax-card--1"
         />
       </div>
 
       {/* Linha 2: card centralizado */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <div className="parallax-row parallax-row--center">
         <ParallaxCard
           review={reviews[1]}
           start={80}
           end={-100}
-          style={{ width: "34%" }}
+          cardClass="parallax-card--2"
         />
       </div>
 
       {/* Linha 3: card à direita */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      <div className="parallax-row parallax-row--right">
         <ParallaxCard
           review={reviews[2]}
           start={-80}
           end={80}
-          style={{ width: "24%", marginRight: "-4%" }}
+          cardClass="parallax-card--3"
         />
       </div>
 
       {/* Linha 4: card centralizado */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <div className="parallax-row parallax-row--center">
         <ParallaxCard
           review={reviews[3]}
           start={0}
           end={-150}
-          style={{ width: "30%" }}
+          cardClass="parallax-card--4"
         />
       </div>
 
       {/* Linha 5: card à direita */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      <div className="parallax-row parallax-row--right">
         <ParallaxCard
           review={reviews[4]}
           start={-80}
           end={80}
-          style={{ width: "24%", marginRight: "-4%" }}
+          cardClass="parallax-card--5"
         />
       </div>
 
       {/* Linha 6: card à esquerda */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-start" }}>
+      <div className="parallax-row parallax-row--left">
         <ParallaxCard
           review={reviews[5]}
           start={-80}
           end={80}
-          style={{ width: "28%", marginLeft: "-4%" }}
+          cardClass="parallax-card--6"
         />
       </div>
 
       {/* Linha 7: card centralizado */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <div className="parallax-row parallax-row--center">
         <ParallaxCard
           review={reviews[6]}
           start={60}
           end={-80}
-          style={{ width: "32%" }}
+          cardClass="parallax-card--2"
         />
       </div>
 
       {/* Linha 8: card à direita */}
-      <div style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+      <div className="parallax-row parallax-row--right">
         <ParallaxCard
           review={reviews[7]}
           start={-80}
           end={80}
-          style={{ width: "26%", marginRight: "-4%" }}
+          cardClass="parallax-card--1"
         />
       </div>
     </div>
@@ -238,13 +230,15 @@ const ReviewCard = ({ name, stars, text }) => {
         </div>
       </div>
       <div style={{ fontSize: "20px", color: "#1A1A1A", lineHeight: 1.4 }}>
-        “{text}”
+        "{text}"
       </div>
     </div>
   );
 };
 
-const ParallaxCard = ({ review, start, end, style }) => {
+// cardClass controla largura/margem (responsivo via CSS + media query).
+// style aqui carrega SÓ o que precisa ser calculado dinamicamente pelo scroll.
+const ParallaxCard = ({ review, start, end, cardClass }) => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -260,7 +254,8 @@ const ParallaxCard = ({ review, start, end, style }) => {
   return (
     <motion.div
       ref={ref}
-      style={{ ...style, transform, opacity }}
+      className={cardClass}
+      style={{ transform, opacity }}
     >
       <ReviewCard name={review.name} stars={review.stars} text={review.text} />
     </motion.div>

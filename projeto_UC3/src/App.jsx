@@ -22,7 +22,7 @@ export default function App() {
       <main>
         <Hero />          
         <About />         
-        <Menu />          
+        <Menu />    
         <SmoothScrollHero />
         <Contact />       
       </main>

@@ -2,11 +2,13 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 200px 2rem 0;
+  padding: clamp(80px, 15vw, 200px) clamp(1rem, 4vw, 2rem) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9rem; /* era 4rem — mais espaço de sobra entre linhas */
+  gap: clamp(3rem, 8vw, 9rem);
+  overflow-x: hidden; /* corta o vazamento causado pelas margens negativas, sem tirar o efeito visual */
+  box-sizing: border-box;
 }
 
 .parallax-row {
@@ -27,11 +29,11 @@
 }
 
 .parallax-row--left .parallax-card {
-  margin-left: -3%;
+  margin-left: -4%;
 }
 
 .parallax-row--right .parallax-card {
-  margin-right: -3%;
+  margin-right: -4%;
 }
 
 /* Larguras reduzidas — sobra mais espaço vazio nas laterais
@@ -43,7 +45,40 @@
 .parallax-card--5 { width: 24%; }
 .parallax-card--6 { width: 28%; }
 
-@media (max-width: 768px) {
+/* ══════════════════════════════════════════════════════
+   RESPONSIVO — todas as faixas de tela
+   ══════════════════════════════════════════════════════ */
+
+/* ── Celulares pequenos (≤ 480px) ────────────────────── */
+@media (max-width: 480px) {
+  .parallax-container {
+    padding: clamp(60px, 20vw, 100px) 1rem 0;
+    gap: 2rem;
+  }
+
+  .parallax-row--left .parallax-card,
+  .parallax-row--right .parallax-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .parallax-card--1,
+  .parallax-card--2,
+  .parallax-card--3,
+  .parallax-card--4,
+  .parallax-card--5,
+  .parallax-card--6 {
+    width: 100%;
+  }
+}
+
+/* ── Celulares médios / grandes (481px a 768px) ──────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .parallax-container {
+    padding: clamp(70px, 18vw, 120px) 1.25rem 0;
+    gap: 2.5rem;
+  }
+
   .parallax-row--left .parallax-card,
   .parallax-row--right .parallax-card {
     margin-left: 0;
@@ -57,5 +92,73 @@
   .parallax-card--5,
   .parallax-card--6 {
     width: 90%;
+  }
+}
+
+/* ── Celulares em landscape ───────────────────────────── */
+@media (max-width: 900px) and (orientation: landscape) {
+  .parallax-container {
+    padding: 60px 1.5rem 0;
+    gap: 1.5rem;
+  }
+
+  .parallax-row--left .parallax-card,
+  .parallax-row--right .parallax-card {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .parallax-card--1,
+  .parallax-card--2,
+  .parallax-card--3,
+  .parallax-card--4,
+  .parallax-card--5,
+  .parallax-card--6 {
+    width: 60%;
+  }
+}
+
+/* ── Tablets (769px a 1024px) ─────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .parallax-container {
+    padding: clamp(100px, 12vw, 150px) 1.5rem 0;
+    gap: 4rem;
+  }
+
+  .parallax-row--left .parallax-card {
+    margin-left: -1.5%;
+  }
+
+  .parallax-row--right .parallax-card {
+    margin-right: -1.5%;
+  }
+
+  .parallax-card--1 { width: 36%; }
+  .parallax-card--2 { width: 44%; }
+  .parallax-card--3 { width: 34%; }
+  .parallax-card--4 { width: 40%; }
+  .parallax-card--5 { width: 34%; }
+  .parallax-card--6 { width: 38%; }
+}
+
+/* ── Notebooks / desktops padrão (1025px a 1440px) ────── */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .parallax-container {
+    gap: clamp(5rem, 7vw, 8rem);
+  }
+}
+
+/* ── Telas grandes / monitores wide (≥ 1441px) ────────── */
+@media (min-width: 1441px) {
+  .parallax-container {
+    max-width: 1500px;
+    gap: 9rem;
+  }
+}
+
+/* ── Ultra-wide / 4K (≥ 1920px) ───────────────────────── */
+@media (min-width: 1920px) {
+  .parallax-container {
+    max-width: 1700px;
   }
 }
