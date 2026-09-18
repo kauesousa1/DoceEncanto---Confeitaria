@@ -17,9 +17,10 @@ export default function App() {
         html { scroll-behavior: smooth; }
       `}</style>
 
-      {/* <Navbar/> */}
+      
 
       <main>
+        <Navbar/>
         <Hero />          
         <About />         
         <Menu />    
