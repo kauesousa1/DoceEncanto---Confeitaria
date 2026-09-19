@@ -1,152 +1,476 @@
-/* ── Testimonials.css ─────────────────────────────── */
+.testimonials-section {
+  --t-bg: #f5f5f3;
+  --t-text: #1a1a1a;
+  --t-muted: #8a8a8a;
+  --t-card: #ffffff;
+  --t-gold: #f4b400;
+  background: var(--t-bg);
+  padding: clamp(48px, 9vw, 90px) clamp(12px, 4vw, 24px) clamp(60px, 10vw, 110px);
+  overflow-x: hidden;
+}
 
-.testi {
+/* ---------- HEADER ---------- */
+
+.testimonials-header {
+  max-width: 640px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.testimonials-badge {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #e4e4e0;
+  color: var(--t-text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.testimonials-header h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: var(--t-text);
+  font-size: clamp(30px, 4.5vw, 44px);
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.testimonials-header p {
+  color: #555;
+  font-size: clamp(13px, 3vw, 16px);
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+.testimonials-cta {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.testimonials-cta:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+/* ---------- CARROSSEL ---------- */
+
+.testimonials-carousel {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 2.2vw, 24px);
+  position: relative;
+}
+
+/* As setas ficam "flutuando" nas bordas do carrossel, por cima dos
+   cards, em vez de ocupar espaço na fileira — assim sobra o máximo de
+   largura possível pros 3 cards em telas pequenas. */
+.testimonials-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  width: clamp(28px, 6vw, 44px);
+  height: clamp(28px, 6vw, 44px);
+  border-radius: 50%;
+  border: none;
+  background: #444;
+  color: #fff;
+  font-size: clamp(12px, 2.5vw, 18px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s ease;
+}
+
+.testimonials-arrow:hover {
+  background: #222;
+}
+
+.testimonials-arrow.left { left: 0; }
+.testimonials-arrow.right { right: 0; }
+
+/* ---------- CARD CENTRAL ---------- */
+
+.testimonials-main-card {
+  position: relative;
+  width: clamp(140px, 42vw, 380px);
+  height: clamp(190px, 58vw, 480px);
+  border-radius: clamp(10px, 2vw, 20px);
+  overflow: hidden;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+/* Variante COM vídeo: fundo escuro, vídeo cobrindo tudo */
+.testimonials-main-card.has-video {
+  background: #222;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+/* Variante SEM vídeo (só depoimento em texto): card claro, citação grande */
+.testimonials-main-card.text-only {
+  background: var(--t-card);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  border: 1px solid #eee;
+  padding: clamp(14px, 3.5vw, 36px) clamp(12px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonials-main-text-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.testimonials-main-text-twitter {
+  color: #d8d8d4;
+  margin-bottom: clamp(8px, 2vw, 18px);
+}
+
+.testimonials-main-quote {
+  color: var(--t-text);
+  font-size: clamp(12px, 2.8vw, 22px);
+  font-weight: 600;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin: 0 0 clamp(10px, 2.5vw, 24px);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+.testimonials-main-text-footer {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1.5vw, 12px);
+  margin-bottom: clamp(8px, 2vw, 20px);
+}
+
+.testimonials-main-text-footer .testimonials-side-avatar {
+  width: clamp(26px, 6vw, 48px);
+  height: clamp(26px, 6vw, 48px);
+}
+
+.testimonials-main-text-bottombar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonials-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  background: #333;
+}
+
+.testimonials-main-topbar {
+  position: absolute;
+  top: clamp(8px, 2vw, 20px);
+  left: clamp(8px, 2vw, 20px);
+  right: clamp(8px, 2vw, 20px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.testimonials-main-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(10px, 2.4vw, 16px);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60vw;
+}
+
+.testimonials-main-role {
+  color: #eee;
+  font-size: clamp(8px, 1.8vw, 13px);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.testimonials-twitter-badge {
+  width: clamp(20px, 4.5vw, 34px);
+  height: clamp(20px, 4.5vw, 34px);
+  border-radius: clamp(6px, 1.5vw, 10px);
+  background: #fff;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonials-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(30px, 8vw, 60px);
+  height: clamp(30px, 8vw, 60px);
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.testimonials-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.testimonials-main-bottombar {
+  position: absolute;
+  bottom: clamp(8px, 2vw, 20px);
+  left: clamp(8px, 2vw, 20px);
+  right: clamp(8px, 2vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+/* ---------- CARDS LATERAIS ---------- */
+
+.testimonials-side-card {
+  width: clamp(60px, 20vw, 320px);
+  min-height: clamp(90px, 26vw, 340px);
+  background: var(--t-card);
+  border-radius: clamp(8px, 2vw, 20px);
+  padding: clamp(8px, 2.2vw, 24px);
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.testimonials-side-card:hover {
+  opacity: 0.7;
+}
+
+/* Miniatura (capa) do vídeo, mostrada no topo do card lateral quando
+   o depoimento tem vídeo — dá pra ver de longe que aquele card, ao
+   virar central, vai tocar um vídeo. */
+.testimonials-side-thumb {
   position: relative;
   width: 100%;
-  height: 120vh;
+  aspect-ratio: 16 / 10;
+  border-radius: clamp(6px, 1.5vw, 12px);
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: clamp(6px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.testimonials-side-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(18px, 5vw, 32px);
+  height: clamp(18px, 5vw, 32px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 4rem 2rem 6rem;
-  overflow: hidden; /* evita que cards nas bordas criem scroll horizontal */
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Cabeçalho */
-.testi__header {
-  text-align: center;
-  margin-bottom: 2rem;
+.testimonials-side-play svg {
+  width: 45%;
+  height: 45%;
+}
+
+.testimonials-side-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: clamp(6px, 2vw, 20px);
+}
+
+.testimonials-side-person {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.5vw, 12px);
+  min-width: 0;
+}
+
+/* Wrapper do avatar, pra poder posicionar o selo de vídeo/texto no canto */
+.testimonials-side-avatar-wrap {
   position: relative;
-  z-index: 2;
+  flex-shrink: 0;
 }
 
-.testi__eyebrow {
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
-  color: #6B3A1F;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+.testimonials-side-avatar {
+  width: clamp(22px, 6vw, 44px);
+  height: clamp(22px, 6vw, 44px);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
-.testi__title {
-  font-family: 'Playfair Display', serif;
-  font-size: 50px;
-  font-weight: 1000;
-  color: #2C1A0E;
-  line-height: 1.2;
+/* Selo pequeno no canto inferior direito do avatar indicando o tipo
+   do depoimento: bolinha rosa com play (vídeo) ou cinza com aspas (texto) */
+.testimonials-type-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: clamp(10px, 2.6vw, 18px);
+  height: clamp(10px, 2.6vw, 18px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--t-card);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-.testi__title--pink {
-  color: #E91E8C;
-  font-style: italic;
-  font-family: 'Pacifico', cursive;
-  font-size: 50px;
+.testimonials-type-badge svg {
+  width: 55%;
+  height: 55%;
 }
 
-.testi__desc {
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
-  color: #6B3A1F;
-  margin-top: 0.75rem;
+.testimonials-type-badge.video {
+  background: #e8608f;
 }
 
-/* CTA — fica no fundo da seção */
-.testi__cta {
-  text-align: center;
-  margin-top: auto;
-  padding-top: 3rem;
-  position: relative;
-  z-index: 2;
-  width: 100%; /* precisa disso pro text-align:center funcionar de verdade */
+.testimonials-type-badge.text {
+  background: #9a9a9a;
 }
 
-.testi__cta-text {
-  font-family: 'Lato', sans-serif;
-  font-size: 30px;
-  color: #6B3A1F;
-  margin-bottom: 1rem;
-  /* removido margin-left: 1300px — jogava o texto pra fora da tela em boa parte dos monitores */
-}
-
-.testi__btn {
-  background: transparent;
-  color: #E91E8C;
-  border: 2px solid #E91E8C;
-  border-radius: 30px;
-  padding: 0.75rem 2rem;
-  font-family: 'Lato', sans-serif;
+.testimonials-side-name {
+  color: var(--t-text);
   font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  /* removido margin-left: 1300px, pelo mesmo motivo */
+  font-size: clamp(9px, 2.4vw, 14px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.testi__btn:hover {
-  background: #E91E8C;
-  color: #ffffff;
+.testimonials-side-role {
+  color: var(--t-muted);
+  font-size: clamp(7px, 1.8vw, 12px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── Cards de depoimento ──────────────────────────────
-   Trocado margin-left/margin-top (px fixos) por left/top
-   em %, relativos ao .testi. Assim os cards se distribuem
-   proporcionalmente à largura real da tela, não a um valor
-   fixo que só funciona numa resolução específica.
-   ──────────────────────────────────────────────────── */
+.testimonials-twitter-icon {
+  color: #b8b8b8;
+  flex-shrink: 0;
+}
 
-.depoi_andre {
-  flex-direction: column;
+.testimonials-twitter-icon svg {
+  width: clamp(10px, 2.6vw, 16px);
+  height: clamp(10px, 2.6vw, 16px);
+}
+
+.testimonials-side-quote {
+  color: #444;
+  font-size: clamp(8px, 2vw, 14px);
+  line-height: 1.6;
+  margin: 0 0 clamp(6px, 2vw, 20px);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Quando já tem a miniatura do vídeo acima, deixa a citação mais curta
+   pra caber tudo sem o card crescer demais na vertical. */
+.testimonials-side-quote.short {
+  -webkit-line-clamp: 2;
+}
+
+.testimonials-side-bottombar {
   display: flex;
-  position: absolute;
-  left: 2%;
-  top: 220px;
-  transform: rotate(-6deg);
+  align-items: center;
+  justify-content: space-between;
 }
 
-.depoi_lucas {
-  flex-direction: column;
+/* ---------- ESTRELAS E DATA (compartilhado) ---------- */
+
+.testimonials-stars {
   display: flex;
-  position: absolute;
-  left: 8%;
-  top: 750px;
-  transform: rotate(-4deg);
+  gap: clamp(1px, 0.4vw, 2px);
+  flex-shrink: 0;
 }
 
-.depoi_patri {
-  flex-direction: column;
-  display: flex;
-  position: absolute;
-  left: 32%;
-  top: 850px;
+.testimonials-stars .star {
+  font-size: clamp(8px, 2vw, 14px);
+  color: #d8d8d4;
 }
 
-.depoi_camila {
-  flex-direction: column;
-  display: flex;
-  position: absolute;
-  left: 56%;
-  top: 470px;
+.testimonials-stars .star.filled {
+  color: var(--t-gold);
 }
 
-.depoi_bea {
-  flex-direction: column;
-  display: flex;
-  position: absolute;
-  left: 80%;
-  top: 400px;
-  transform: rotate(6deg);
+.testimonials-date {
+  color: var(--t-muted);
+  font-size: clamp(7px, 1.6vw, 12px);
+  white-space: nowrap;
 }
 
-.Nome_Depoi {
-  margin-top: 20px;
-  font-weight: 700;
-  font-size: 20px;
+.testimonials-main-bottombar .testimonials-date {
+  color: #eee;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
-h2 {
-  font-size: 20px;
+/* ---------- DOTS (indicadores) ---------- */
+/* Não são mais necessárias: os 3 cards (esquerda, centro, direita)
+   agora ficam sempre visíveis em qualquer tamanho de tela. */
+
+.testimonials-dots {
+  display: none;
+}
+
+/* ---------- RESPONSIVO ---------- */
+/* Tudo já é fluido via clamp() nas regras acima — os 3 cards continuam
+   lado a lado do maior monitor até a tela mais estreita. Estes ajustes
+   finos cuidam só de detalhes que clamp() sozinho não resolve bem. */
+
+/* Telas muito estreitas: corta o texto do papel/cargo pra não espremer
+   o layout, mantendo nome, avatar, selo e estrelas visíveis. */
+@media (max-width: 380px) {
+  .testimonials-side-role { display: none; }
+  .testimonials-side-quote { -webkit-line-clamp: 2; }
+}
+
+/* Monitores muito grandes: trava o crescimento pra não ficar
+   exagerado, a seção já tem max-width, isso é só reforço do gap. */
+@media (min-width: 1600px) {
+  .testimonials-carousel { gap: 32px; }
 }

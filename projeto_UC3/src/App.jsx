@@ -24,7 +24,7 @@ export default function App() {
         <Hero />          
         <About />         
         <Menu />    
-        <SmoothScrollHero />
+        <Testimonials/>
         <Contact />       
       </main>
 
