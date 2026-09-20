@@ -6,6 +6,7 @@ import Testimonials from "./components/Testimonials";
 import Contact      from "./components/Contact";
 import Footer       from "./components/Footer";
 import { SmoothScrollHero } from "./SmoothScrollhero";
+import FixedBackground from "./components/FixedBackground";
 
 export default function App() {
   return (
@@ -17,15 +18,15 @@ export default function App() {
         html { scroll-behavior: smooth; }
       `}</style>
 
-      
+     <FixedBackground />
 
-      <main>
-        <Navbar/>
-        <Hero />          
-        <About />         
-        <Menu />    
-        <Testimonials/>
-        <Contact />       
+      <main style={{ position: "relative", zIndex: 1 }}>
+        <Navbar />
+        <Hero />
+        <About />
+        <Menu />
+        <Testimonials />
+        <Contact />
       </main>
 
       <Footer />

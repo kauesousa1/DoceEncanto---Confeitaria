@@ -145,7 +145,7 @@
   top: 65%;
   right: clamp(1rem, 6vw, 6rem);
   transform: translateY(-50%) rotate(8deg);
-  min-width: 400px;
+  min-width: 150px;
   height: auto;
   z-index: 3;
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
@@ -448,6 +448,20 @@
 
 }
 
+@media(width:390px){
+  .hero__cake{
+    top: 240px;
+  }
+
+  .hero__content{
+    top:-100px ;
+  }
+
+  .hero__watermark-wrap{
+    top:400px;
+  }
+}
+
 
 
 
@@ -469,9 +483,9 @@
 
   .hero__polaroid {
     width: 95px;
-    top: 22%;
+    top: 32%;
     left: auto;
-    right: 0.75rem;
+    right: -2.85rem;
   }
 
   .hero__content {
@@ -524,12 +538,26 @@
 
 /* ── Celulares em orientação paisagem (landscape) ────── */
 
+@media (width:768px){
+  .hero__polaroid{
+    top: 300px;
+  }
+
+  .hero__content{
+    margin-bottom: 400px;
+  }
+
+  .hero__cake{
+    top: 500px;
+  }
+}
 
 /* ── Tablets: retrato e paisagem (ex: iPad) ──────────── */
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero__content {
     max-width: 460px;
     margin-left: clamp(1.5rem, 4vw, 3rem);
+    top: -20%;
     
   }
 
@@ -543,14 +571,14 @@
   }
 
   .hero__cake {
-    top: 62%;
+    top: 52%;
     width: clamp(260px, 32vw, 380px);
   }
 
   .hero__polaroid {
     width: 170px;
     right: clamp(1rem, 4vw, 2.5rem);
-    top: 60%;
+    top: 50%;
     margin-right: 0;
   }
 
@@ -595,7 +623,7 @@
 }
 
 /* ── Notebooks / desktops padrão ─────────────────────── */
-@media (min-width: 1025px) and (max-width: 1440px) {
+@media (min-width: 1020px) and (max-width: 1440px) {
   .hero__content {
     margin-left: clamp(2rem, 5vw, 4rem);
     max-width: 1000px;
@@ -603,12 +631,12 @@
 
   .hero__polaroid{
     width: clamp(200px, 50vw, 100px);
-    top: 300px;
+    top: 340px;
   }
 
 
   .hero__cake{
-    top: 400px;
+    top: 450px;
   }
 }
 

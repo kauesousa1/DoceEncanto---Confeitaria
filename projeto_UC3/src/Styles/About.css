@@ -5,12 +5,15 @@ body {
 }
 
 .about {
-  background: linear-gradient(180deg, #FDF3F0 0%, #ffffff 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(253, 243, 240, 0.92) 0%,
+    rgba(255, 255, 255, 0.92) 100%);
   padding: 6rem 5rem;
   position: relative;
   overflow: hidden;
   height: 120vh;
-  
+
 }
 
 /* ── Animações reaproveitadas da hero ──────────────── */

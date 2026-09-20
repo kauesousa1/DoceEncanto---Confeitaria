@@ -4,16 +4,19 @@ body {
 }
 
 .cardapio-section {
-          --bg: #2b1710;
-          --card-bg: #3b2216;
-          --card-border: #4d2f1f;
-          --gold: #d4a857;
-          --pink: #e8608f;
-          --cream: #f3e6d8;
-          background: var(--bg);
-          padding: 80px 24px 100px;
-          position: relative;
-        }
+  --bg: #2b1710;
+  --card-bg: #3b2216;
+  --card-border: #4d2f1f;
+  --gold: #d4a857;
+  --pink: #e8608f;
+  --cream: #f3e6d8;
+
+
+  background: rgba(43, 23, 16, 0.25);
+
+  padding: 80px 24px 100px;
+  position: relative;
+}
 
 .cardapio-header {
   position: relative;
@@ -101,7 +104,9 @@ body {
         }
 
         .cardapio-card {
-          background: var(--card-bg);
+            background: rgba(59, 34, 22, 0.85);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           border: 1px solid var(--card-border);
           border-radius: 16px;
           overflow: hidden;
@@ -150,6 +155,7 @@ body {
           inset: 0;
           display: flex;
           z-index: 101;
+          overscroll-behavior: contain;
         }
 
         .cardapio-panel-image-side {

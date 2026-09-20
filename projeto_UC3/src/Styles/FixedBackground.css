@@ -1,0 +1,25 @@
+.fixed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100lvh;
+  z-index: 0;
+  pointer-events: none;
+  background: #2b1710;
+}
+
+.fixed-bg__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* escurecimento leve pra dar leitura ao texto do cardápio */
+.fixed-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 23, 16, 0.35);
+}

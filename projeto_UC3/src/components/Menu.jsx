@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
+import boloMaracuja from "../imagens/BoloMaracuja.png";
+
 import "../Styles/Menu.css"
 
 // ---------------------------------------------------------------
@@ -34,26 +36,30 @@ const CATEGORIES = [
       { id: "b5", name: "Bolo de Limão", price: "62,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa leve com recheio cítrico e cobertura de merengue." },
     ],
   },
-  {
-    id: "tortas",
-    title: "Tortas",
-    icon: "🥧",
-    items: [
-      { id: "t1", name: "Torta de Maracujá", price: "55,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Base crocante, creme de maracujá e cobertura de chantilly." },
-      { id: "t2", name: "Torta de Morango", price: "58,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa amanteigada, creme confeiteiro e morangos frescos." },
-      { id: "t3", name: "Torta de Ninho", price: "60,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Camadas de leite ninho com cobertura crocante." },
-    ],
-  },
+  // {
+  //   id: "tortas",
+  //   title: "Tortas",
+  //   icon: "🥧",
+  //   items: [
+  //     { id: "t1", name: "Torta de Maracujá", price: "55,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Base crocante, creme de maracujá e cobertura de chantilly." },
+  //     { id: "t2", name: "Torta de Morango", price: "58,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa amanteigada, creme confeiteiro e morangos frescos." },
+  //     { id: "t3", name: "Torta de Ninho", price: "60,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Camadas de leite ninho com cobertura crocante." },
+  //   ],
+  // },
   {
     id: "copos",
     title: "Copos da Felicidade",
     icon: "🍮",
     items: [
-      { id: "c1", name: "Morango", price: "18,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Camadas de bolo, creme e morango fresco em taça." },
-      { id: "c2", name: "Avelã", price: "20,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Bolo de chocolate com creme de avelã em camadas." },
-      { id: "c3", name: "Abacaxi", price: "18,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Bolo leve, creme e abacaxi caramelizado." },
+      { id: "c1", name: "Ovomaltine Cremoso", price: "29,17", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camadas generosas de brigadeiro belga, bolo de chocolate úmido, creme de ninho e ovalmatine crocante. Combinação irresistível!" },
+      { id: "c2", name: "Oreo Supreme", price: "29,17", rating: 4.5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camada de brigadeiro ninho, crocantes pedaços de oreo, brigadeiro belga, e chantininho. Uma combinação irresistível!" },
+      { id: "c3", name: "Ninho com Morango", price: "29,92", rating: 4, image: boloMaracuja, description: "Bolo leve, creme e abacaxi caramelizado." },
+      { id: "c4", name: "Morango Encantado", price: "30,00", rating:5, image: "../imagens/BoloMaracuja.png", description:"Copo da Felicidade 300ml- Bolo de chocolate umido, brigadeiro de ninho, morangos fresquinhos, chantininho. Combinação simplesmente inesquecível!"},
+      { id: "c5", name: "Mousse de Nutella", price: "30,00", rating:4, image: "", description:"Copo da Felicidade 300ml- Camadas generosas de bolo de chocolate, intercaladas com mousse de nutella, brigadeiro belga e chantininho. Cada colherada traz uma explosão de sabor!"},
+      { id: "c6", name: "Ninho com Uva", price: "32,80", rating:5, image: "", description:"Copo da Felicidade 300ml- Camadas de brownie, brigadeiro cremoso de Ninho, uvas fresquinhas e chantininho, finalizadas com muito carinho para deixar cada colherada irresistível."},
     ],
   },
+  
   {
     id: "outros",
     title: "Outros Doces",
@@ -145,6 +151,18 @@ export default function Cardapio() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  // Trava o scroll da página enquanto o painel do produto está aberto
+useEffect(() => {
+  if (selected) {
+    const scrollY = window.scrollY;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+      window.scrollTo(0, scrollY);
+    };
+  }
+}, [selected]);
 
   return (
     <section className="cardapio-section">

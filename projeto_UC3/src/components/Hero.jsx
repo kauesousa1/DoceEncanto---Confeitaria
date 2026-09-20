@@ -2,17 +2,17 @@ import "../Styles/Hero.css";
 
 import boloHero from "../imagens/boloHero.svg";
 import polaroid from "../imagens/polaroid.svg";
-import backgroundHero from "../imagens/heroBack.png";
+// import backgroundHero from "../imagens/heroBack.png";
 
 export default function Hero() {
   return (
     <section className="hero">
-      <img
+      {/* <img
         src={backgroundHero}
         alt=""
         aria-hidden="true"
         className="hero_background"
-      />
+      /> */}
 
       <div className="hero__logo-top">
         <span className="hero__logo-name">Doce Encanto</span>
