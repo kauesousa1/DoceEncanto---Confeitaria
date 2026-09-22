@@ -5,15 +5,25 @@ body {
 }
 
 .about {
-  background: linear-gradient(
-    180deg,
-    rgba(253, 243, 240, 0.92) 0%,
-    rgba(255, 255, 255, 0.92) 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 6rem 5rem;
   position: relative;
   overflow: hidden;
-  height: 120vh;
+}
 
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(253, 243, 240, 0.45) 0%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* ── Animações reaproveitadas da hero ──────────────── */
@@ -36,7 +46,7 @@ body {
 .about__deco {
   position: absolute;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   opacity: 0.5;
 }
 
@@ -50,7 +60,6 @@ body {
 }
 
 .about__deco--heart-1 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 2.5rem;
   color: #F27CA0;
   top: 15%;
@@ -58,7 +67,6 @@ body {
 }
 
 .about__deco--heart-2 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1.6rem;
   color: #F9A8C2;
   bottom: 10%;
@@ -70,12 +78,11 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3rem;
   align-items: center;
   position: relative;
   z-index: 1;
-  top: 200px;
 }
 
 /* ── Coluna da foto ────────────────────────────────── */
@@ -87,8 +94,8 @@ body {
 
 .about__photo-glow {
   position: absolute;
-  width: 340px;
-  height: 340px;
+  width: 420px;
+  height: 420px;
   background: radial-gradient(circle, #F9A8C2 0%, transparent 70%);
   border-radius: 50%;
   top: 50%;
@@ -104,7 +111,7 @@ body {
 
 .about__photo {
   width: 100%;
-  max-width: 360px;
+  max-width: 480px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
@@ -113,10 +120,10 @@ body {
 /* Selo girando */
 .about__badge {
   position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 110px;
-  height: 110px;
+  bottom: 10px;
+  right: 10px;
+  width: 120px;
+  height: 120px;
   z-index: 2;
 }
 
@@ -126,7 +133,6 @@ body {
 }
 
 .about__badge-svg text {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 7px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -140,12 +146,10 @@ body {
   transform: translate(-50%, -50%);
   font-size: 1.4rem;
   color: #E0165C;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* ── Texto ─────────────────────────────────────────── */
 .about__kicker {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   letter-spacing: 0.15em;
   font-size: 0.85rem;
   font-weight: 700;
@@ -153,7 +157,6 @@ body {
 }
 
 .about__title {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: clamp(1.9rem, 4vw, 2.8rem);
   color: #2C1A0E;
@@ -165,7 +168,6 @@ body {
   position: relative;
   display: inline-block;
   color: #E0165C;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .about__underline {
@@ -177,7 +179,6 @@ body {
 }
 
 .about__body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1.05rem;
   color: #6B3A1F;
   line-height: 1.8;
@@ -201,14 +202,12 @@ body {
 }
 
 .about__stat-number {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #E0165C;
 }
 
 .about__stat-label {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.8rem;
   color: #6B3A1F;
   line-height: 1.3;
@@ -242,17 +241,145 @@ body {
 }
 
 .about__feature span {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 0.85rem;
   color: #6B3A1F;
   line-height: 1.3;
 }
 
 /* ── Responsivo ────────────────────────────────────── */
+/* ── Responsivo ────────────────────────────────────── */
 @media (max-width: 900px) {
-  .about { padding: 4rem 2rem; }
-  .about__grid { grid-template-columns: 1fr; text-align: center; }
-  .about__stats, .about__features { justify-content: center; flex-wrap: wrap; }
-  .about__body { margin-left: auto; margin-right: auto; }
-  .about__badge { right: 10px; }
+  .about {
+    padding: 3rem 1.5rem;
+    background-attachment: scroll;
+  }
+
+    .about__deco--whisk {
+    display: none;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr; /* uma coluna só */
+    gap: 1.5rem;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .about__image-col {
+    align-self: center;
+  }
+
+  .about__photo {
+    max-width: 220px;
+    min-width: unset;
+    margin: 0 auto;
+  }
+
+  .about__photo-glow {
+    width: 260px;
+    height: 260px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .about__badge {
+    width: 90px;
+    height: 90px;
+    right: 0;
+    bottom: -5px;
+  }
+
+  .about__badge-svg text {
+    font-size: 6px;
+  }
+
+  .about__title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .about__kicker {
+    font-size: 0.8rem;
+  }
+
+  .about__body {
+    margin: 0 auto 1rem;
+    font-size: 0.95rem;
+    max-width: 480px;
+  }
+
+  .about__stats,
+  .about__features {
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .about__stat-label,
+  .about__feature span {
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 500px) {
+  .about {
+    padding: 2.5rem 1rem;
+  }
+
+  .about__photo {
+    max-width: 160px;
+  }
+
+  .about__photo-glow {
+    width: 190px;
+    height: 190px;
+  }
+
+  .about__badge {
+    width: 70px;
+    height: 70px;
+  }
+
+  .about__badge-svg text {
+    font-size: 5px;
+  }
+
+  .about__title {
+    font-size: 1.4rem;
+  }
+
+  .about__body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .about__stats {
+    gap: 1.2rem;
+  }
+
+  .about__stat-number {
+    font-size: 1.4rem;
+  }
+
+  .about__stat-label {
+    font-size: 0.7rem;
+  }
+
+  .about__features {
+    gap: 1rem;
+  }
+
+  .about__feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .about__feature span {
+    font-size: 0.7rem;
+  }
+    .about__deco--whisk {
+    display: none;
+  }
 }

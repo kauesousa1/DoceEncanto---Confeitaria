@@ -1,10 +1,14 @@
 import "../Styles/About.css";
 import regiane from "../imagens/fotoRegiane.png";
 import batedeira from "../imagens/batedoura.svg";
+import backBranco from "../imagens/backBranco.png";
 
 export default function About() {
   return (
-    <section className="about">
+   <section
+  className="about"
+  style={{ backgroundImage: `url(${backBranco})` }}
+>
 
       {/* Decorações flutuantes de fundo */}
       <img className="about__deco about__deco--whisk float-slow" src={batedeira} alt="" aria-hidden="true" />
