@@ -4,6 +4,8 @@
   --t-muted: #8a8a8a;
   --t-card: #ffffff;
   --t-gold: #f4b400;
+  --t-brown: #2b1710;
+  --t-pink: #e8608f;
   background: var(--t-bg);
   padding: clamp(48px, 9vw, 90px) clamp(12px, 4vw, 24px) clamp(60px, 10vw, 110px);
   overflow-x: hidden;
@@ -74,9 +76,6 @@
   position: relative;
 }
 
-/* As setas ficam "flutuando" nas bordas do carrossel, por cima dos
-   cards, em vez de ocupar espaço na fileira — assim sobra o máximo de
-   largura possível pros 3 cards em telas pequenas. */
 .testimonials-arrow {
   position: absolute;
   top: 50%;
@@ -116,20 +115,23 @@
   flex-shrink: 0;
 }
 
-/* Variante COM vídeo: fundo escuro, vídeo cobrindo tudo */
 .testimonials-main-card.has-video {
-  background: #222;
+  background-color: var(--t-brown);
+  background-size: cover;
+  background-position: center;
   box-shadow: 0 25px 50px rgba(0,0,0,0.25);
 }
 
-/* Variante SEM vídeo (só depoimento em texto): card claro, citação grande */
 .testimonials-main-card.text-only {
-  background: var(--t-card);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-  border: 1px solid #eee;
+  background-color: var(--t-brown);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  border: none;
   padding: clamp(14px, 3.5vw, 36px) clamp(12px, 3vw, 32px);
   display: flex;
   flex-direction: column;
+  
 }
 
 .testimonials-main-text-wrap {
@@ -138,13 +140,14 @@
   height: 100%;
 }
 
-.testimonials-main-text-twitter {
-  color: #d8d8d4;
-  margin-bottom: clamp(8px, 2vw, 18px);
+.testimonials-main-quote-icon {
+  color: var(--t-pink);
+  margin-bottom: clamp(6px, 1.5vw, 14px);
+  display: inline-flex;
 }
 
 .testimonials-main-quote {
-  color: var(--t-text);
+  color: #f5f0ec;
   font-size: clamp(12px, 2.8vw, 22px);
   font-weight: 600;
   line-height: 1.5;
@@ -166,6 +169,14 @@
 .testimonials-main-text-footer .testimonials-side-avatar {
   width: clamp(26px, 6vw, 48px);
   height: clamp(26px, 6vw, 48px);
+}
+
+.testimonials-main-text-footer .testimonials-side-name {
+  color: #f5f0ec;
+}
+
+.testimonials-main-text-footer .testimonials-side-role {
+  color: #cbb8ad;
 }
 
 .testimonials-main-text-bottombar {
@@ -258,7 +269,17 @@
   z-index: 2;
 }
 
-/* ---------- CARDS LATERAIS ---------- */
+/* ---------- ESTRELAS — só rosa dentro do card CENTRAL (destaque) ---------- */
+
+.testimonials-main-card .testimonials-stars .star.filled {
+  color: var(--t-pink);
+}
+
+.testimonials-main-card .testimonials-stars .star {
+  color: #6b5248;
+}
+
+/* ---------- CARDS LATERAIS (preview — continuam como estavam) ---------- */
 
 .testimonials-side-card {
   width: clamp(60px, 20vw, 320px);
@@ -280,9 +301,6 @@
   opacity: 0.7;
 }
 
-/* Miniatura (capa) do vídeo, mostrada no topo do card lateral quando
-   o depoimento tem vídeo — dá pra ver de longe que aquele card, ao
-   virar central, vai tocar um vídeo. */
 .testimonials-side-thumb {
   position: relative;
   width: 100%;
@@ -329,7 +347,6 @@
   min-width: 0;
 }
 
-/* Wrapper do avatar, pra poder posicionar o selo de vídeo/texto no canto */
 .testimonials-side-avatar-wrap {
   position: relative;
   flex-shrink: 0;
@@ -343,8 +360,6 @@
   display: block;
 }
 
-/* Selo pequeno no canto inferior direito do avatar indicando o tipo
-   do depoimento: bolinha rosa com play (vídeo) ou cinza com aspas (texto) */
 .testimonials-type-badge {
   position: absolute;
   bottom: -2px;
@@ -409,8 +424,6 @@
   -webkit-box-orient: vertical;
 }
 
-/* Quando já tem a miniatura do vídeo acima, deixa a citação mais curta
-   pra caber tudo sem o card crescer demais na vertical. */
 .testimonials-side-quote.short {
   -webkit-line-clamp: 2;
 }
@@ -421,8 +434,7 @@
   justify-content: space-between;
 }
 
-/* ---------- ESTRELAS E DATA (compartilhado) ---------- */
-
+/* Estrelas dos cards laterais continuam douradas (não mexi aqui) */
 .testimonials-stars {
   display: flex;
   gap: clamp(1px, 0.4vw, 2px);
@@ -450,27 +462,18 @@
 }
 
 /* ---------- DOTS (indicadores) ---------- */
-/* Não são mais necessárias: os 3 cards (esquerda, centro, direita)
-   agora ficam sempre visíveis em qualquer tamanho de tela. */
 
 .testimonials-dots {
   display: none;
 }
 
 /* ---------- RESPONSIVO ---------- */
-/* Tudo já é fluido via clamp() nas regras acima — os 3 cards continuam
-   lado a lado do maior monitor até a tela mais estreita. Estes ajustes
-   finos cuidam só de detalhes que clamp() sozinho não resolve bem. */
 
-/* Telas muito estreitas: corta o texto do papel/cargo pra não espremer
-   o layout, mantendo nome, avatar, selo e estrelas visíveis. */
 @media (max-width: 380px) {
   .testimonials-side-role { display: none; }
   .testimonials-side-quote { -webkit-line-clamp: 2; }
 }
 
-/* Monitores muito grandes: trava o crescimento pra não ficar
-   exagerado, a seção já tem max-width, isso é só reforço do gap. */
 @media (min-width: 1600px) {
   .testimonials-carousel { gap: 32px; }
 }

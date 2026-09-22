@@ -167,10 +167,10 @@ useEffect(() => {
   return (
     <section className="cardapio-section">
 
-      <div className="cardapio-header">
+      {/* <div className="cardapio-header">
         <h2 className="texto_cardapio">DELICIOSOS</h2>
         <p className="subTitulo_cardapio">PRODUTOS <br/> QUE ENCANTAM EM TODOS OS <br/> MOMENTOS</p>
-      </div>
+      </div> */}
 
       {CATEGORIES.map((category) => (
         <div className="cardapio-category" key={category.id}>
