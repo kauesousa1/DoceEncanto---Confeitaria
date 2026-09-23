@@ -247,28 +247,36 @@ body {
 }
 
 /* ── Responsivo ────────────────────────────────────── */
-/* ── Responsivo ────────────────────────────────────── */
 @media (max-width: 900px) {
   .about {
     padding: 3rem 1.5rem;
     background-attachment: scroll;
   }
 
-    .about__deco--whisk {
+  .about__deco--whisk {
     display: none;
   }
 
   .about__grid {
-    grid-template-columns: 1fr; /* uma coluna só */
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
     text-align: center;
-    align-items: center;
     justify-items: center;
   }
 
-  .about__image-col {
-    align-self: center;
+  /* "descasca" o container de texto: kicker, título, parágrafos, stats
+     e features viram itens diretos do grid, no mesmo nível da foto,
+     permitindo controlar a ordem de cada um individualmente */
+  .about__text-col {
+    display: contents;
   }
+
+  .about__kicker    { order: 1; font-size: 0.8rem; }
+  .about__title     { order: 2; font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .about__image-col { order: 3; align-self: center; }
+  .about__body      { order: 4; margin: 0 auto 1rem; font-size: 0.95rem; max-width: 480px; }
+  .about__stats     { order: 5; }
+  .about__features  { order: 6; }
 
   .about__photo {
     max-width: 220px;
@@ -293,20 +301,6 @@ body {
 
   .about__badge-svg text {
     font-size: 6px;
-  }
-
-  .about__title {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
-  }
-
-  .about__kicker {
-    font-size: 0.8rem;
-  }
-
-  .about__body {
-    margin: 0 auto 1rem;
-    font-size: 0.95rem;
-    max-width: 480px;
   }
 
   .about__stats,
@@ -373,13 +367,3 @@ body {
   .about__feature-icon {
     width: 40px;
     height: 40px;
-    font-size: 1rem;
-  }
-
-  .about__feature span {
-    font-size: 0.7rem;
-  }
-    .about__deco--whisk {
-    display: none;
-  }
-}

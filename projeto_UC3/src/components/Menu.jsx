@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-import boloMaracuja from "../imagens/BoloMaracuja.png";
 
 import "../Styles/Menu.css"
 
@@ -53,7 +52,7 @@ const CATEGORIES = [
     items: [
       { id: "c1", name: "Ovomaltine Cremoso", price: "29,17", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camadas generosas de brigadeiro belga, bolo de chocolate úmido, creme de ninho e ovalmatine crocante. Combinação irresistível!" },
       { id: "c2", name: "Oreo Supreme", price: "29,17", rating: 4.5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camada de brigadeiro ninho, crocantes pedaços de oreo, brigadeiro belga, e chantininho. Uma combinação irresistível!" },
-      { id: "c3", name: "Ninho com Morango", price: "29,92", rating: 4, image: boloMaracuja, description: "Bolo leve, creme e abacaxi caramelizado." },
+      { id: "c3", name: "Ninho com Morango", price: "29,92", rating: 4, description: "Bolo leve, creme e abacaxi caramelizado." },
       { id: "c4", name: "Morango Encantado", price: "30,00", rating:5, image: "../imagens/BoloMaracuja.png", description:"Copo da Felicidade 300ml- Bolo de chocolate umido, brigadeiro de ninho, morangos fresquinhos, chantininho. Combinação simplesmente inesquecível!"},
       { id: "c5", name: "Mousse de Nutella", price: "30,00", rating:4, image: "", description:"Copo da Felicidade 300ml- Camadas generosas de bolo de chocolate, intercaladas com mousse de nutella, brigadeiro belga e chantininho. Cada colherada traz uma explosão de sabor!"},
       { id: "c6", name: "Ninho com Uva", price: "32,80", rating:5, image: "", description:"Copo da Felicidade 300ml- Camadas de brownie, brigadeiro cremoso de Ninho, uvas fresquinhas e chantininho, finalizadas com muito carinho para deixar cada colherada irresistível."},
