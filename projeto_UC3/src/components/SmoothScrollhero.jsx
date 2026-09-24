@@ -7,7 +7,7 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 import BoloRosa from './imagens/imagemBack.png'
-import "./Styles/SmoothScrollHero.module.css"; // importa as classes responsivas
+import "../Styles/SmoothScrollHero.module.css";// importa as classes responsivas
 
 export const SmoothScrollHero = () => {
   return (

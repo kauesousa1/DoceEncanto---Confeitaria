@@ -7,7 +7,7 @@ import Menu         from "./components/Menu";
 import Testimonials from "./components/Testimonials";
 import Contact      from "./components/Contact";
 import Footer       from "./components/Footer";
-import { SmoothScrollHero } from "./SmoothScrollhero";
+// import { SmoothScrollHero } from "./components/SmoothScrollhero";
 import FixedBackground from "./components/FixedBackground";
 import Admin from "./components/Admin";
 
