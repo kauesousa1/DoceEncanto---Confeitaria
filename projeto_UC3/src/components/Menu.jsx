@@ -1,77 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-
-import "../Styles/Menu.css"
+import "../Styles/Menu.css";
 
 // ---------------------------------------------------------------
-// DADOS DO CARDÁPIO
-// Troque "image" pelos imports reais das suas fotos
-// (ex: import BoloChocolate from './imagens/bolo-chocolate.png')
-//
-// Pra um produto ter o giro 360° de verdade, adicione "images360":
-// um array com o caminho de cada foto da sequência, em ordem
-// (ex: frame-01.jpg até frame-24.jpg). Produtos sem "images360"
-// continuam funcionando normalmente, só sem o giro real.
+// URL da API. Em produção, troque pelo endereço real onde a API
+// vai estar hospedada (ex: https://api.seusite.com).
 // ---------------------------------------------------------------
-
-// Frames de exemplo só pra você ver o mecanismo funcionando.
-// Troque por: Array.from({ length: 24 }, (_, i) => `/produtos/bolo-chocolate/frame-${String(i + 1).padStart(2, "0")}.jpg`)
-const demoFrames360 = Array.from(
-  { length: 12 },
-  (_, i) => `https://placehold.co/500x500/3d2418/d4a857?text=Frame+${i + 1}`
-);
-
-const CATEGORIES = [
-  {
-    id: "bolos",
-    title: "Bolos",
-    icon: "🎂",
-    items: [
-      { id: "b1", name: "Bolo de Chocolate", price: "65,00", rating: 5, image: "./imagens/bolo-chocolate.png", images360: demoFrames360, description: "Massa de chocolate fofinha com recheio de brigadeiro e cobertura cremosa." },
-      { id: "b2", name: "Bolo de Ninho", price: "70,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa branca aerada com recheio de leite ninho e morango." },
-      { id: "b3", name: "Bolo Red Velvet", price: "75,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa aveludada com cream cheese, um clássico que encanta." },
-      { id: "b4", name: "Bolo de Cenoura", price: "60,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa de cenoura com cobertura de brigadeiro na medida certa." },
-      { id: "b5", name: "Bolo de Limão", price: "62,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa leve com recheio cítrico e cobertura de merengue." },
-    ],
-  },
-  // {
-  //   id: "tortas",
-  //   title: "Tortas",
-  //   icon: "🥧",
-  //   items: [
-  //     { id: "t1", name: "Torta de Maracujá", price: "55,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Base crocante, creme de maracujá e cobertura de chantilly." },
-  //     { id: "t2", name: "Torta de Morango", price: "58,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Massa amanteigada, creme confeiteiro e morangos frescos." },
-  //     { id: "t3", name: "Torta de Ninho", price: "60,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Camadas de leite ninho com cobertura crocante." },
-  //   ],
-  // },
-  {
-    id: "copos",
-    title: "Copos da Felicidade",
-    icon: "🍮",
-    items: [
-      { id: "c1", name: "Ovomaltine Cremoso", price: "29,17", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camadas generosas de brigadeiro belga, bolo de chocolate úmido, creme de ninho e ovalmatine crocante. Combinação irresistível!" },
-      { id: "c2", name: "Oreo Supreme", price: "29,17", rating: 4.5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Copo da Felicidade 300ml- Camada de brigadeiro ninho, crocantes pedaços de oreo, brigadeiro belga, e chantininho. Uma combinação irresistível!" },
-      { id: "c3", name: "Ninho com Morango", price: "29,92", rating: 4, description: "Bolo leve, creme e abacaxi caramelizado." },
-      { id: "c4", name: "Morango Encantado", price: "30,00", rating:5, image: "../imagens/BoloMaracuja.png", description:"Copo da Felicidade 300ml- Bolo de chocolate umido, brigadeiro de ninho, morangos fresquinhos, chantininho. Combinação simplesmente inesquecível!"},
-      { id: "c5", name: "Mousse de Nutella", price: "30,00", rating:4, image: "", description:"Copo da Felicidade 300ml- Camadas generosas de bolo de chocolate, intercaladas com mousse de nutella, brigadeiro belga e chantininho. Cada colherada traz uma explosão de sabor!"},
-      { id: "c6", name: "Ninho com Uva", price: "32,80", rating:5, image: "", description:"Copo da Felicidade 300ml- Camadas de brownie, brigadeiro cremoso de Ninho, uvas fresquinhas e chantininho, finalizadas com muito carinho para deixar cada colherada irresistível."},
-    ],
-  },
-  
-  {
-    id: "outros",
-    title: "Outros Doces",
-    icon: "🍫",
-    items: [
-      { id: "o1", name: "Brownie", price: "12,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Denso, achocolatado, com gotas de chocolate." },
-      { id: "o2", name: "Pudim", price: "15,00", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Pudim de leite condensado tradicional, cremoso." },
-      { id: "o3", name: "Brigadeirão", price: "16,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Textura de brigadeiro com calda cremosa." },
-      { id: "o4", name: "Beijinho", price: "3,50", rating: 4, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Docinho de coco, unidade." },
-      { id: "o5", name: "Trufa", price: "6,00", rating: 5, image: "https://placehold.co/400x400/3d2418/d4a857?text=Foto", description: "Trufa de chocolate belga, unidade." },
-    ],
-  },
-];
+const API_URL = "http://localhost:3001";
 
 function Stars({ count }) {
   return (
@@ -139,8 +75,67 @@ function Product360Image({ frames, layoutId, spin = true, style, ...motionProps 
   );
 }
 
+// Formata "12.5" ou 12.5 -> "12,50" (padrão brasileiro)
+function formatarPreco(preco) {
+  const numero = Number(preco);
+  if (Number.isNaN(numero)) return preco;
+  return numero.toFixed(2).replace(".", ",");
+}
+
+// Agrupa a lista "plana" de produtos que vem da API em categorias,
+// no mesmo formato que o restante do componente já espera.
+function agruparPorCategoria(produtos) {
+  const grupos = {};
+
+  produtos.forEach((produto) => {
+    const nomeCategoria = produto.categoria || "Outros";
+
+    if (!grupos[nomeCategoria]) {
+      grupos[nomeCategoria] = {
+        id: nomeCategoria.toLowerCase().replace(/\s+/g, "-"),
+        title: nomeCategoria,
+        icon: "🍰",
+        items: [],
+      };
+    }
+
+    grupos[nomeCategoria].items.push({
+      id: String(produto.id),
+      name: produto.nome,
+      price: formatarPreco(produto.preco),
+      rating: produto.rating ?? 5,
+      image: produto.imagem_url || "https://placehold.co/400x400/3d2418/d4a857?text=Foto",
+      images360: produto.images360 || null,
+      description: produto.descricao || "",
+    });
+  });
+
+  return Object.values(grupos);
+}
+
 export default function Cardapio() {
   const [selected, setSelected] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState(null);
+
+  // Busca os produtos na API assim que o componente monta
+  useEffect(() => {
+    fetch(`${API_URL}/produtos`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Falha ao buscar produtos");
+        return res.json();
+      })
+      .then((data) => {
+        setCategories(agruparPorCategoria(data));
+        setErro(null);
+      })
+      .catch((err) => {
+        console.error("Erro ao buscar produtos:", err);
+        setErro("Não foi possível carregar o cardápio agora. Tenta recarregar a página.");
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
   // Fecha o painel com a tecla ESC
   useEffect(() => {
@@ -152,26 +147,36 @@ export default function Cardapio() {
   }, []);
 
   // Trava o scroll da página enquanto o painel do produto está aberto
-useEffect(() => {
-  if (selected) {
-    const scrollY = window.scrollY;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-      window.scrollTo(0, scrollY);
-    };
+  useEffect(() => {
+    if (selected) {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [selected]);
+
+  if (loading) {
+    return (
+      <section id="cardapio-section" className="cardapio-section">
+        <p>Carregando cardápio...</p>
+      </section>
+    );
   }
-}, [selected]);
+
+  if (erro) {
+    return (
+      <section id="cardapio-section" className="cardapio-section">
+        <p>{erro}</p>
+      </section>
+    );
+  }
 
   return (
     <section id="cardapio-section" className="cardapio-section">
-
-      {/* <div className="cardapio-header">
-        <h2 className="texto_cardapio">DELICIOSOS</h2>
-        <p className="subTitulo_cardapio">PRODUTOS <br/> QUE ENCANTAM EM TODOS OS <br/> MOMENTOS</p>
-      </div> */}
-
-      {CATEGORIES.map((category) => (
+      {categories.map((category) => (
         <div className="cardapio-category" key={category.id}>
           <div className="cardapio-category-title">
             <span>{category.icon}</span> {category.title}
