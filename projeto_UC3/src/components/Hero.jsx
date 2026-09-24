@@ -5,6 +5,11 @@ import polaroid from "../imagens/polaroid.svg";
 // import backgroundHero from "../imagens/heroBack.png";
 
 export default function Hero() {
+
+  const irParaCardapio = () => {
+    document.getElementById("cardapio-section")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="hero">
       {/* <img
@@ -56,7 +61,7 @@ export default function Hero() {
           selecionados e muito carinho.
         </p>
 
-        <button className="hero__cta">
+        <button className="hero__cta" onClick={irParaCardapio}>
           Ver nossos produtos <span aria-hidden="true">→</span>
         </button>
       </div>

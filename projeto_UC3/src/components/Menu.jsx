@@ -164,7 +164,7 @@ useEffect(() => {
 }, [selected]);
 
   return (
-    <section className="cardapio-section">
+    <section id="cardapio-section" className="cardapio-section">
 
       {/* <div className="cardapio-header">
         <h2 className="texto_cardapio">DELICIOSOS</h2>
