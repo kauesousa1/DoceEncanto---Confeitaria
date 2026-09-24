@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../Styles/Admin.css";
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://doceria-api-w5gc.onrender.com";
 
 const CAMPOS_VAZIOS = {
   nome: "",

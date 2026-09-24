@@ -7,7 +7,7 @@ import "../Styles/Menu.css";
 // URL da API. Em produção, troque pelo endereço real onde a API
 // vai estar hospedada (ex: https://api.seusite.com).
 // ---------------------------------------------------------------
-const API_URL = "http://localhost:3001";
+const API_URL = "https://doceria-api-w5gc.onrender.com";
 
 function Stars({ count }) {
   return (
